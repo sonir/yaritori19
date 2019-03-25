@@ -5,7 +5,7 @@ var SC_DEBUG_FLG = true;
 
 
 //SCENE CONTROL
-var INIT_SCENE = 0;
+var INIT_SCENE = 1;
 var FIRST_SCENE = 1;
 
 //SYSTEM_VARIABLES

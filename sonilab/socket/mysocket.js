@@ -25,6 +25,11 @@ connection.onmessage = function(e) {
     rcv = str.split(' ') //Store the params into an array
     //ADR= rcv[1] , arg1 = rcv[2] , arg3[3] ...
     print( rcv[1]+ " , " + float(rcv[2])+" , "+float(rcv[3]));
+    rcv.shift(); //Del first element(rx)
+    let tmp = new CustomEvent(rcv[0]);
+    tmp.arg = rcv;
+
+    document.dispatchEvent(tmp);
 
 };
 

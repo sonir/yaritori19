@@ -8,7 +8,6 @@ var sc2 = sc2 || {};
 
     // print('setup:sc2')
     agm_init();
-//doo
 
   }
   document.addEventListener('/setup', sc2.setup);
@@ -35,6 +34,20 @@ var sc2 = sc2 || {};
 
   }
   document.addEventListener('/draw', sc2.draw);
+
+
+  //Event Handler for agentAdd
+  _.posted = function (e){ //OSC EVENT
+
+    if(e.arg[1]==SYS_ID){
+      print(">>posted " , e.arg[0], e.arg[1]);
+      let tmp = new Agent(agents.length);
+      agm_add(tmp);
+    }
+
+  }
+  document.addEventListener('/yaritori/post', sc2.posted);
+
 
 
 })(sc2);
