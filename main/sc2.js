@@ -8,6 +8,7 @@ var sc2 = sc2 || {};
 
     // print('setup:sc2')
     agm_init();
+//doo
 
   }
   document.addEventListener('/setup', sc2.setup);
