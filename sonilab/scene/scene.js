@@ -19,7 +19,7 @@ var layer = [true, false];
 
   _.update = function(){
 
-        ev_update.layer = layer;
+      ev_update.layer = layer;
       document.dispatchEvent(ev_update);
 
   }
