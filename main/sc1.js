@@ -6,12 +6,14 @@ var sc1 = sc1 || {};
   let sel = null;
 
 
+
   _.setup = function(e){
 
     // print('setup:sc1');
     let i = 0;
     sel = createSelect();
     sel.position(cal_x(0.5) , cal_y(0.5));
+    sel.option('ID');
     while(i<UNIT_NUM){
 
       sel.option(str(i));
@@ -28,7 +30,6 @@ var sc1 = sc1 || {};
   _.update = function(e){
 
     // print('update:sc1');
-
     if(e.layer[uid]){
     }
 
@@ -41,13 +42,10 @@ var sc1 = sc1 || {};
 
     if(e.layer[uid]){
 
-
-
-
-
       // print('draw:sc1');
-      fill(255,0,0);
-      square(cal_x(0.5)-50,cal_y(0.5)-50,100);
+      // fill(255,0,0);
+      // square(cal_x(0.5)-50,cal_y(0.5)-50,100);
+
     }
 
   }
@@ -65,6 +63,7 @@ var sc1 = sc1 || {};
     sel.hide();
 
   }
+
 
 
 })(sc1);

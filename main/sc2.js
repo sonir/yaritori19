@@ -7,6 +7,7 @@ var sc2 = sc2 || {};
   _.setup = function(e){
 
     // print('setup:sc2')
+    agm_init();
 
   }
   document.addEventListener('/setup', sc2.setup);
@@ -27,8 +28,8 @@ var sc2 = sc2 || {};
 
     if(e.layer[uid]){
       // print('draw:sc2', e.layer);
-      fill(0,0,255);
-      circle(cal_x(0.5),cal_y(0.5),100);
+      agm_update();
+
     }
 
   }

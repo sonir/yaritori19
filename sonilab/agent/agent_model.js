@@ -1,6 +1,6 @@
 const AGM_NUM = 2;
 const AGM_MAX = AGM_NUM;
-const AGM_INIT_NUM = 12;
+const AGM_INIT_NUM = 6;
 //const SIZE_MOD = 0.03;
 
 
@@ -72,40 +72,10 @@ function agm_add(ag){
 
 function agm_init(){
 
+  //Create First Init
   for(let i = 0; i<AGM_INIT_NUM; i++){
     agm_add( (new Agent(i)) ) ;
   }
-
-  // agm_add(new Agent(0));
-  // agm_add(new Agent(1));
-  // agents[0].view=1.0;
-  // agents[1].view=0.0;
-  // agents[0].size=agents[0].size*1.5;
-
-  // let i = 0;
-  // agm_add(new Agent(i));
-  // agents[i].size = 0.05;
-  // agents[i].position.x = 0.0;
-  // agents[i].position.y = 0.0;
-  // i+=1;
-  //
-  // agm_add(new Agent(i));
-  // agents[i].size = 0.05;
-  // agents[i].position.x = 1.0;
-  // agents[i].position.y = 0.0;
-  // i+=1;
-  //
-  // agm_add(new Agent(i));
-  // agents[i].size = 0.05;
-  // agents[i].position.x = 0.0;
-  // agents[i].position.y = 1.0;
-  // i+=1;
-  //
-  // agm_add(new Agent(i));
-  // agents[i].size = 0.05;
-  // agents[i].position.x = 1.0;
-  // agents[i].position.y = 1.0;
-  // i+=1;
 
 }
 
