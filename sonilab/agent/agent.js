@@ -76,7 +76,7 @@ class Agent {
 
     let reaction = function(v,me){
 
-      me.spd = calVel(v , me.spd);
+      me.spd = AgTools.calVel(v , me.spd);
 
     }
 
@@ -86,7 +86,7 @@ class Agent {
 
       case STATE.CALM:
         v = createVector( (random(-1,1)*SPD_MOD) , (random(-1,1)*SPD_MOD) );
-        this.spd = calVel(v, this.spd);
+        this.spd = AgTools.calVel(v, this.spd);
         break;
 
       case STATE.RUN:
@@ -143,8 +143,8 @@ class Agent {
 
     for(let i=0; i<this.node_count; i++){
 
-      this.nodes[i].x += ( scale2amp( noise(this.node_seeds[i].x) )*AG_ANIM_SPD );
-      this.nodes[i].y += ( scale2amp( noise(this.node_seeds[i].y) )*AG_ANIM_SPD );
+      this.nodes[i].x += ( AgTools.scale2amp( noise(this.node_seeds[i].x) )*AG_ANIM_SPD );
+      this.nodes[i].y += ( AgTools.scale2amp( noise(this.node_seeds[i].y) )*AG_ANIM_SPD );
       this.node_seeds[i].x += random(0.01, 0.04);
       this.node_seeds[i].y += random(0.01, 0.04);
 

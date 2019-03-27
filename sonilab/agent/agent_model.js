@@ -32,20 +32,20 @@ function agm_update(){
 
 function agm_cycle(ag){
 
-  ag.nearest_id = seekNearest(ag, agents);
+  ag.nearest_id = AgTools.seekNearest(ag, agents);
 
   if(ag.nearest_id != -1){
     ag.nearest_ag = agents[ag.nearest_id];
-    ag.distance_with_nearest = distance(ag.position , ag.nearest_ag.position);
+    ag.distance_with_nearest = AgTools.distance(ag.position , ag.nearest_ag.position);
 
     // ag.state = STATE.CALM;
 
-    if( !isViewRange(ag , ag.distance_with_nearest) ){
+    if( !AgTools.isViewRange(ag , ag.distance_with_nearest) ){
       ag.state = STATE.CALM;
       ag.walk();
     }else{
 
-      if( isLarge(ag.size , ag.nearest_ag.size) ) ag.state=STATE.CHASE;
+      if( AgTools.isLarge(ag.size , ag.nearest_ag.size) ) ag.state=STATE.CHASE;
       else ag.state=STATE.RUN;
 
     }
@@ -82,98 +82,98 @@ function agm_init(){
 
 //////////////////////////////////////////////////////
 // Tools
-
-function distance(a, b){
-
-  let dist_x = b.x - a.x;
-  let dist_y = b.y - a.y;
-
-  return Math.sqrt( (dist_x * dist_x) + (dist_y * dist_y) );
-
-}
-
-
-function seekNearest(ag,ags){
-
-  if(ags.length<=1){
-    print("agents array is too small. return -1");
-    return -1;
-  }
-
-  let nearest_id = -1;
-  let val = 0.0;
-  let nearest_val = 999.9;
-
-  let len = ags.length;
-  for(var i=0; i<len;i++){
-
-    if(ags[i].active ==false || ag.uid == i) continue;
-    val = distance(ag.position , ags[i].position);
-    if(val < nearest_val){
-      nearest_id = i;
-      nearest_val = val;
-    }
-  }
-
-  return nearest_id;
-
-}
-
-
-
-function isViewRange(ag, dist){
-
-  if(ag.view > dist) return true;
-  else return false;
-
-}
-
-function isLarge(f1, f2){
-
-  if(f1>f2){
-    return 1;
-  }else if(f1<f2){
-    return 0;
-  }else if(f1==f2){
-    return -1;
-  }
-
-}
-
-
-/////////////////////////////////////
-
-function calVel(vec, vel){
-
-   // vel.add( createVector( (random(-1,1)*SPD_MOD) , (random(-1,1)*SPD_MOD) ) );
-   vel.add( vec );
-
-   //SPD Limitter
-   if(vel.x>SPD_MAX){
-     vel.x = SPD_MAX;
-   }else if(vel.x <= (SPD_MAX*-1) ){
-     vel.x = (SPD_MAX*-1);
-   }else{
-   }
-
-   if(vel.y>SPD_MAX){
-     vel.y = SPD_MAX;
-   }else if(vel.y <= (SPD_MAX*-1) ){
-     vel.y = (SPD_MAX*-1);
-   }else{
-   }
-
-   return vel;
-
-}
-
-//Convert param from 0-1 to -1 to 1
-function scale2amp(val){
-
-  return amp = (val - 0.5)*2.0;
-
-}
-
+//
+// function distance(a, b){
+//
+//   let dist_x = b.x - a.x;
+//   let dist_y = b.y - a.y;
+//
+//   return Math.sqrt( (dist_x * dist_x) + (dist_y * dist_y) );
+//
+// }
+//
+//
+// function seekNearest(ag,ags){
+//
+//   if(ags.length<=1){
+//     print("agents array is too small. return -1");
+//     return -1;
+//   }
+//
+//   let nearest_id = -1;
+//   let val = 0.0;
+//   let nearest_val = 999.9;
+//
+//   let len = ags.length;
+//   for(var i=0; i<len;i++){
+//
+//     if(ags[i].active ==false || ag.uid == i) continue;
+//     val = distance(ag.position , ags[i].position);
+//     if(val < nearest_val){
+//       nearest_id = i;
+//       nearest_val = val;
+//     }
+//   }
+//
+//   return nearest_id;
+//
+// }
+//
+//
+//
+// function isViewRange(ag, dist){
+//
+//   if(ag.view > dist) return true;
+//   else return false;
+//
+// }
+//
+// function isLarge(f1, f2){
+//
+//   if(f1>f2){
+//     return 1;
+//   }else if(f1<f2){
+//     return 0;
+//   }else if(f1==f2){
+//     return -1;
+//   }
+//
+// }
+//
+//
+// /////////////////////////////////////
+//
+// function calVel(vec, vel){
+//
+//    // vel.add( createVector( (random(-1,1)*SPD_MOD) , (random(-1,1)*SPD_MOD) ) );
+//    vel.add( vec );
+//
+//    //SPD Limitter
+//    if(vel.x>SPD_MAX){
+//      vel.x = SPD_MAX;
+//    }else if(vel.x <= (SPD_MAX*-1) ){
+//      vel.x = (SPD_MAX*-1);
+//    }else{
+//    }
+//
+//    if(vel.y>SPD_MAX){
+//      vel.y = SPD_MAX;
+//    }else if(vel.y <= (SPD_MAX*-1) ){
+//      vel.y = (SPD_MAX*-1);
+//    }else{
+//    }
+//
+//    return vel;
+//
+// }
+//
+// //Convert param from 0-1 to -1 to 1
+// function scale2amp(val){
+//
+//   return amp = (val - 0.5)*2.0;
+//
+// }
+//
 
 
 //////////////////////////////////////

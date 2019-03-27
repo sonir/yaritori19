@@ -8,30 +8,30 @@ touched = false;
 
 function test(){
 
-  if(scale2amp(1.0)!=1.0){
+  if(AgTools.scale2amp(1.0)!=1.0){
 
-    print('ERR:scale2amp');
+    print('ERR:AgTools.scale2amp');
 
-  } else if(scale2amp(0.0) != -1.0 ){
+  } else if(AgTools.scale2amp(0.0) != -1.0 ){
 
-    print('ERR:scale2amp');
+    print('ERR:AgTools.scale2amp');
 
-  }else if(scale2amp(0.5) != 0.0 ){
+  }else if(AgTools.scale2amp(0.5) != 0.0 ){
 
-    print('ERR:scale2amp');
+    print('ERR:AgTools.scale2amp');
 
   }else{
 
-    print('scale2amp is OK')
+    print('AgTools.scale2amp is OK')
 
   }
 
-  //Test distance
+  //Test AgTools.distance
   let a = createVector(0,0);
   let b = createVector(3,4);
   try {
-    if(distance(a,b)!=5.0 ){
-    throw new Error('ERR :: distance()');
+    if(AgTools.distance(a,b)!=5.0 ){
+    throw new Error('ERR :: AgTools.distance()');
     }
   }catch(e){
     console.log(e.message);
@@ -47,7 +47,7 @@ function test(){
   dummy_ags[1].position.x = 1.0;   dummy_ags[0].position.y = 1.0;
   dummy_ags[2].position.x = 0.5;   dummy_ags[0].position.y = 0.5;
   try {
-    if(seekNearest(dummy_ags[0], dummy_ags)!=2 ){
+    if(AgTools.seekNearest(dummy_ags[0], dummy_ags)!=2 ){
     throw new Error('ERR ::seek_nearest()');
     }
   }catch(e){
@@ -59,7 +59,7 @@ function test(){
   let ag_for_view = new Agent(0);
   ag_for_view.view = 0.137;
   try{
-    if(isViewRange(ag_for_view, 0.136)!= true){
+    if(AgTools.isViewRange(ag_for_view, 0.136)!= true){
       throw new Error('ERR ::isViewRange()');
     }
   }catch(e){
@@ -67,7 +67,7 @@ function test(){
     troubled = true;
   }
   try{
-    if(isViewRange(ag_for_view, 0.138)!= false){
+    if(AgTools.isViewRange(ag_for_view, 0.138)!= false){
       throw new Error('ERR ::isViewRange()');
     }
   }catch(e){
@@ -77,12 +77,12 @@ function test(){
 
   //Test isLarge
   try{
-    if(isLarge(3,1)!=1){
-      throw new Error('ERR ::isLarge()1');
-    }else if( isLarge(1,3)!=0 ){
-      throw new Error('ERR ::isLarge()2');
-    }else if( isLarge(1,1)!=-1 ){
-      throw new Error('ERR ::isLarge()3');
+    if(AgTools.isLarge(3,1)!=1){
+      throw new Error('ERR ::AgTools.isLarge()1');
+    }else if( AgTools.isLarge(1,3)!=0 ){
+      throw new Error('ERR ::AgTools.isLarge()2');
+    }else if( AgTools.isLarge(1,1)!=-1 ){
+      throw new Error('ERR ::AgTools.isLarge()3');
     }
   }catch(e){
     console.log(e.message);
