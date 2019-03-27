@@ -1,6 +1,6 @@
 const AGM_NUM = 2;
 const AGM_MAX = AGM_NUM;
-const AGM_INIT_NUM = 6;
+const AGM_INIT_NUM = 36;
 //const SIZE_MOD = 0.03;
 
 
@@ -38,21 +38,19 @@ function agm_cycle(ag){
     ag.nearest_ag = agents[ag.nearest_id];
     ag.distance_with_nearest = AgTools.distance(ag.position , ag.nearest_ag.position);
 
-    // ag.state = STATE.CALM;
-
     if( !AgTools.isViewRange(ag , ag.distance_with_nearest) ){
-      ag.state = STATE.CALM;
+      ag.updateState(STATE.CALM);
       ag.walk();
     }else{
 
       if( AgTools.isLarge(ag.size , ag.nearest_ag.size) ) ag.state=STATE.CHASE;
-      else ag.state=STATE.RUN;
+      else ag.updateState(STATE.RUN);
 
     }
 
   }else{ //If agent is one only
 
-    ag.state = STATE.CALM;
+    ag.updateState(STATE.CALM);
 
   }
   ag.walk();
@@ -80,105 +78,26 @@ function agm_init(){
 }
 
 
+function ags_sound_update(){
+
+  for(let i = 0; i<agents.length; i++){
+
+    //Play sound when the agent state was changed
+    if(agents[i].state != agents[i].prestate){
+
+      let tmp = new CustomEvent('/snd_trigger');
+      print("SND[" , i , "] " , agents[i].state , " : " , agents[i].prestate);
+      document.dispatchEvent(tmp);
+
+
+    }
+
+  }
+
+}
+
+
 //////////////////////////////////////////////////////
-// Tools
-//
-// function distance(a, b){
-//
-//   let dist_x = b.x - a.x;
-//   let dist_y = b.y - a.y;
-//
-//   return Math.sqrt( (dist_x * dist_x) + (dist_y * dist_y) );
-//
-// }
-//
-//
-// function seekNearest(ag,ags){
-//
-//   if(ags.length<=1){
-//     print("agents array is too small. return -1");
-//     return -1;
-//   }
-//
-//   let nearest_id = -1;
-//   let val = 0.0;
-//   let nearest_val = 999.9;
-//
-//   let len = ags.length;
-//   for(var i=0; i<len;i++){
-//
-//     if(ags[i].active ==false || ag.uid == i) continue;
-//     val = distance(ag.position , ags[i].position);
-//     if(val < nearest_val){
-//       nearest_id = i;
-//       nearest_val = val;
-//     }
-//   }
-//
-//   return nearest_id;
-//
-// }
-//
-//
-//
-// function isViewRange(ag, dist){
-//
-//   if(ag.view > dist) return true;
-//   else return false;
-//
-// }
-//
-// function isLarge(f1, f2){
-//
-//   if(f1>f2){
-//     return 1;
-//   }else if(f1<f2){
-//     return 0;
-//   }else if(f1==f2){
-//     return -1;
-//   }
-//
-// }
-//
-//
-// /////////////////////////////////////
-//
-// function calVel(vec, vel){
-//
-//    // vel.add( createVector( (random(-1,1)*SPD_MOD) , (random(-1,1)*SPD_MOD) ) );
-//    vel.add( vec );
-//
-//    //SPD Limitter
-//    if(vel.x>SPD_MAX){
-//      vel.x = SPD_MAX;
-//    }else if(vel.x <= (SPD_MAX*-1) ){
-//      vel.x = (SPD_MAX*-1);
-//    }else{
-//    }
-//
-//    if(vel.y>SPD_MAX){
-//      vel.y = SPD_MAX;
-//    }else if(vel.y <= (SPD_MAX*-1) ){
-//      vel.y = (SPD_MAX*-1);
-//    }else{
-//    }
-//
-//    return vel;
-//
-// }
-//
-// //Convert param from 0-1 to -1 to 1
-// function scale2amp(val){
-//
-//   return amp = (val - 0.5)*2.0;
-//
-// }
-//
-
-
-//////////////////////////////////////
-
-
 
 function drawAgent(x, y, scale, ag) {
 

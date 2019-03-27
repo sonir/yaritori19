@@ -41,6 +41,7 @@ class Agent {
     this.uid = num;
     this.active = true;
     this.state = AG_STSTE_DEF;
+    this.prestate = AG_STSTE_DEF;
 
     //Basic Params
     this.size = random(0.01 , 1.0) * SIZE_MOD;
@@ -151,6 +152,15 @@ class Agent {
     }
 
   }
+
+
+  updateState(current){
+
+    this.prestate = this.state;
+    this.state = current;
+
+  }
+
 
 
 } //End of class
