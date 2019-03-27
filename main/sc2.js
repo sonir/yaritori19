@@ -7,7 +7,7 @@ var sc2 = sc2 || {};
   _.setup = function(e){
 
     // print('setup:sc2')
-    agm_init();
+    agmInit();
 
   }
   document.addEventListener('/setup', sc2.setup);
@@ -28,7 +28,8 @@ var sc2 = sc2 || {};
 
     if(e.layer[uid]){
       // print('draw:sc2', e.layer);
-      agm_update();
+      agmUpdate();
+      agmStateCheck();
 
     }
 
@@ -42,7 +43,7 @@ var sc2 = sc2 || {};
     if(e.arg[1]==SYS_ID){
       print(">>posted " , e.arg[0], e.arg[1]);
       let tmp = new Agent(agents.length);
-      agm_add(tmp);
+      agmAdd(tmp);
     }
 
   }

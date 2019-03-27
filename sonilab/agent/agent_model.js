@@ -1,14 +1,8 @@
-const AGM_NUM = 2;
-const AGM_MAX = AGM_NUM;
-const AGM_INIT_NUM = 36;
-//const SIZE_MOD = 0.03;
-
-
 //Agents
 let agents = [];
 
 
-function agm_update(){
+function agmUpdate(){
 
   let deadCheck = function(ag){
 
@@ -23,14 +17,14 @@ function agm_update(){
 
   for(let i = 0; i<agents.length; i++){
     if(deadCheck(agents[i]))continue;
-    agm_cycle(agents[i]);
+    agmCycle(agents[i]);
     drawAgent(agents[i].position.x, agents[i].position.y, agents[i].size, agents[i]);
   }
 
 }
 
 
-function agm_cycle(ag){
+function agmCycle(ag){
 
   ag.nearest_id = AgTools.seekNearest(ag, agents);
 
@@ -43,7 +37,7 @@ function agm_cycle(ag){
       ag.walk();
     }else{
 
-      if( AgTools.isLarge(ag.size , ag.nearest_ag.size) ) ag.state=STATE.CHASE;
+      if( AgTools.isLarge(ag.size , ag.nearest_ag.size) ) ag.updateState(STATE.CHASE);
       else ag.updateState(STATE.RUN);
 
     }
@@ -59,7 +53,7 @@ function agm_cycle(ag){
 }
 
 
-function agm_add(ag){
+function agmAdd(ag){
 
   ag.uid = agents.length;
   agents.push(ag);
@@ -68,31 +62,33 @@ function agm_add(ag){
 
 
 
-function agm_init(){
+function agmInit(){
 
   //Create First Init
   for(let i = 0; i<AGM_INIT_NUM; i++){
-    agm_add( (new Agent(i)) ) ;
+    agmAdd( (new Agent(i)) ) ;
   }
 
 }
 
 
-function ags_sound_update(){
+function agmStateCheck(){
 
   for(let i = 0; i<agents.length; i++){
 
     //Play sound when the agent state was changed
-    if(agents[i].state != agents[i].prestate){
+    if(agents[i].state != agents[i].prestate && i == 0){
 
-      let tmp = new CustomEvent('/snd_trigger');
-      print("SND[" , i , "] " , agents[i].state , " : " , agents[i].prestate);
+      let tmp = new CustomEvent('/state_changed');
+      // print(scount + " SND[" , i , "] " , agents[i].state , " : " , agents[i].prestate);
       document.dispatchEvent(tmp);
 
 
     }
 
   }
+
+  scount++;
 
 }
 

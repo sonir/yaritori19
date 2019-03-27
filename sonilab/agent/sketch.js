@@ -130,7 +130,7 @@ function draw() {
 
     checkScreen(true);
     agm_update();
-    ags_sound_update();
+    ags_state_check();
 
   }else{
 
