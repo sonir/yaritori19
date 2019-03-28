@@ -45,7 +45,7 @@ var AgTools = AgTools || {};
 
   _.isViewRange = function (ag, dist){
 
-    if(ag.view > dist) return true;
+    if(ag.view*AG_VIEW_MOD > dist) return true;
     else return false;
 
   }

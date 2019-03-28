@@ -34,7 +34,7 @@ function setup() {
 
 
 function draw() {
-
+  
   background(20);
   checkScreen(SC_DEBUG_FLG);
 

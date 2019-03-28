@@ -9,7 +9,18 @@ var STATE = {
 };
 
 //Default Params
-const AG_VIEW_DEF = 0.05; //0.1;//0.5;
+const AG_VIEW_DEF = 0.025//0.05;
+var AG_VIEW_MOD = 0.0;
+if(PERFORMANCE_MODE){
+
+  AG_VIEW_MOD = 35.0;
+
+}else{
+
+  AG_VIEW_MOD = 1.0;
+
+}
+
 const AG_MOV_DEF = 0.005;
 const AG_NEAREST_DEF = -1;
 const AG_STSTE_DEF = STATE.CALM;
@@ -20,7 +31,7 @@ const AG_DEATH_THREATH =0.00005; //0.0001
 
 //Fix or MOD for Interactions
 const SIZE_MOD = 0.03;
-const SPD_MOD = 0.0000025;//0.00005;
+const SPD_MOD =  0.00000125;//0.0000025;
 // const SPD_ACTIVE_MOD = 3.0;
 // const SPD_RUNCHASE_MOD = SPD_MOD*SPD_ACTIVE_MOD;
 const SPD_RUNCHASE_MOD = 2.7;
@@ -30,6 +41,8 @@ const AG_NODE_MAX = 7;
 const AG_NODE_MIN = 3;
 const AG_ANIM_SPD = 0.03; //0.03
 const AG_ANIM_LIM = 5.0;
+
+const NODE_SIZE = 80;
 
 
 
