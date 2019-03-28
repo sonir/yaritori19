@@ -1,7 +1,8 @@
-var IP = 'localhost';
+var IP = '192.168.100.201';
+var PORT = '8080'
 // var IP = window.location.host;
 
-var connection = new WebSocket('ws://' + IP + ':8080' + '/maxmsp');
+var connection = new WebSocket('ws://' + IP + ':' + PORT + '/maxmsp');
 
 /////////////////////////////////////
 
@@ -35,3 +36,22 @@ connection.onmessage = function(e) {
 
 
 /////////////////////////////////////
+
+var Sock = Sock || {};
+
+(function(_){
+
+  _.send = function(e){
+
+    print('sockSend(): ', e.data);
+    connection.send(e.data);
+
+  }
+  document.addEventListener('/send' , Sock.send);
+
+
+
+})(Sock);
+
+
+//////

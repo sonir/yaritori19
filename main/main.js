@@ -1,0 +1,117 @@
+
+
+function test(){
+
+}
+
+
+function preload() { //SOUND Loading
+
+  //Init scene for specified sc
+  layer[0] = false;
+  layer[INIT_SCENE]=true;
+
+  //Load Sound buffers
+  Snd.setup();
+
+
+}
+
+
+
+function setup() {
+
+  //scSetupAuto ();
+  scSetupSemiAuto(SC_SIZE.IPHONE_X);
+  test();
+
+  //Init Scene
+  Scene.setup();
+
+
+}
+
+
+
+function draw() {
+
+  background(20);
+  checkScreen(SC_DEBUG_FLG);
+
+  //Update Scenes
+  Scene.update();
+  Scene.draw();
+
+
+}
+
+
+function touchEnded() {
+
+  print('touch');
+  // Snd.initPlay();
+  //Play Sound for iOS Audio enable
+  let tmp = new CustomEvent('/init_play');
+  document.dispatchEvent(tmp);
+
+
+}
+
+
+
+function deviceTurned(){
+
+  // print("turned!!");
+  setTimeout(scSetupAuto, 3000);
+  // scSetupAuto();
+  cl = color(random(0,255) , random(0,255) , random(0,255));
+  // color = 255;
+
+}
+
+
+
+
+function calVel(vel){
+
+   vel.add( createVector( (random(-1,1)*SPD_MOD) , (random(-1,1)*SPD_MOD) ) );
+
+   //SPD Limitter
+   if(vel.x>SPD_MAX){
+
+     vel.x = SPD_MAX;
+     // print('LIM_A : ' + vel.x);
+
+   }else if(vel.x <= (SPD_MAX*-1) ){
+
+     vel.x = (SPD_MAX*-1);
+     // print('LIM_B : ' + vel.x);
+
+   }else{
+
+     // print('LIM_ZERO1 : ' + vel.x);
+
+   }
+
+   if(vel.y>SPD_MAX){
+
+     vel.y = SPD_MAX;
+     // print('LIM_C : ' + vel.y);
+
+   }else if(vel.y <= (SPD_MAX*-1) ){
+
+     vel.y = (SPD_MAX*-1);
+     // print('LIM_D : ' + vel.y);
+
+   }else{
+
+     // print('LIM_ZERO2 : ' + vel.y);
+
+   }
+
+   return vel;
+
+}
+
+
+//////////////////////////////////////

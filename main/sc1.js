@@ -55,6 +55,11 @@ var sc1 = sc1 || {};
 
   _.selectID = function(){
 
+    print('slectID');
+    // let tmp = new CustomEvent('/init_play');
+    // document.dispatchEvent(tmp);
+    Snd.initPlay();
+
     SYS_ID = int(sel.value());
     SC_DEBUG_FLG = false;
     layer[0]= !layer[0];
