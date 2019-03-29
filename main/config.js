@@ -17,4 +17,4 @@ var SYS_ID = 0;
 
 
 //MODEL CONTROL
-const AGM_INIT_NUM = 16;
+const AGM_INIT_NUM = 32;

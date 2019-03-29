@@ -19,7 +19,6 @@ function agmUpdate(){
     if(deadCheck(agents[i]))continue;
     agmCycle(agents[i]);
     drawAgent(agents[i].position.x, agents[i].position.y, agents[i].size, agents[i]);
-    if(i==3) print('STATE:' , agents[i].state, " , " , agents[i].size);
   }
 
 }

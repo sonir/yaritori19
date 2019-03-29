@@ -15,6 +15,7 @@ class Glitch {
     this.mode = GLITCH_MODE.POLY;
     this.duration = 0.1;
     this.index_max = this.calcIndexMax();
+    this.dice = 0;
 
   }
 
@@ -73,10 +74,10 @@ class Glitch {
 
   playWithRandom(){
 
-    let dice = int(random()*this.index_max);
+    this.dice = int(random()*this.index_max);
     // print(dice , "|",this.index_max,"|",this.tick, "|" , this.buf.duration());
     // print(this.calcIndexMax());
-    this.play(dice);
+    this.play(this.dice);
   }
 
 
@@ -86,11 +87,20 @@ class Glitch {
 
     if( !this.buf.isLoaded() ){
 
-      print("bainnnn");
+      print("CAUTION :: The sound is loading now. Ignore this trigger.");
       return;
 
     }
 
+    //This sound trigger is monophonic. Ignore trigger until the end of playback.
+    if( this.buf.isPlaying() ){
+
+      // print('the sound is playing now. ignore it');
+      return;
+
+    }
+
+    // this.buf.stop(); //This glitch is monophonic.
     try {
       this.buf.jump(index*this.tick, this.duration);
     }
