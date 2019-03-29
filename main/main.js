@@ -12,7 +12,7 @@ function preload() { //SOUND Loading
   layer[INIT_SCENE]=true;
 
   //Load Sound buffers
-  Snd.setup();
+  Snd.preload();
 
 
 }
@@ -23,18 +23,22 @@ function setup() {
 
   //scSetupAuto ();
   scSetupSemiAuto(SC_SIZE.IPHONE_X);
-  test();
+
+  //Pramset of sounds
+  Snd.setup();
 
   //Init Scene
   Scene.setup();
 
+  //Do test
+  test();
 
 }
 
 
 
 function draw() {
-  
+
   background(20);
   checkScreen(SC_DEBUG_FLG);
 

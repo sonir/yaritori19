@@ -10,7 +10,7 @@ class Glitch {
 
   constructor(filename){
 
-    this.buf = loadSound(filename);
+    this.buf = loadSound(filename, this.initSound);
     this.tick = 0.1;
     this.mode = GLITCH_MODE.POLY;
     this.duration = 0.1;
@@ -74,13 +74,23 @@ class Glitch {
   playWithRandom(){
 
     let dice = int(random()*this.index_max);
+    // print(dice , "|",this.index_max,"|",this.tick, "|" , this.buf.duration());
+    // print(this.calcIndexMax());
     this.play(dice);
   }
 
 
 
   play(index){
-    print(index);
+
+    print(this.tick, "|" ,this.duration);
+
+    if( !this.buf.isLoaded() ){
+
+      print("bainnnn");
+      return;
+
+    }
 
     try {
       this.buf.jump(index*this.tick, this.duration);
@@ -88,8 +98,6 @@ class Glitch {
     catch {
       this.buf.jump(index*this.tick);
     }
-    // print('play with index: ' , index, ' current: ' , index*this.tick );
-    // print(this.duration);
 
   }
 

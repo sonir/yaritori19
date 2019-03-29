@@ -65,6 +65,9 @@ var sc1 = sc1 || {};
     layer[0]= !layer[0];
     layer[FIRST_SCENE]= true;
     print(SYS_ID);
+    let tmp = new CustomEvent('/set_glitch');
+    tmp.sys_id = SYS_ID;
+    document.dispatchEvent(tmp);
     sel.hide();
 
   }
