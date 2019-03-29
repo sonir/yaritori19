@@ -83,7 +83,6 @@ class Glitch {
 
   play(index){
 
-    print(this.tick, "|" ,this.duration);
 
     if( !this.buf.isLoaded() ){
 

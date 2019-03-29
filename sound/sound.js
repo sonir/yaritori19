@@ -81,7 +81,7 @@ var Snd = Snd || {};
 
       case 5:
         glitch = bank.rock;
-        print('set rock as glitch.')        
+        print('set rock as glitch.')
         break;
 
       default:
@@ -111,7 +111,7 @@ var Snd = Snd || {};
 
   _.trg = function(e){
 
-    s1.play();
+    // s1.play();
     glitch.playWithRandom();
 
     let tmp = new CustomEvent('/send');

@@ -1,7 +1,7 @@
 //config file for Yaritori2019
 
 //MODE
-var PERFORMANCE_MODE = true;
+var PERFORMANCE_MODE = false;
 
 //SCREEN SETUPS
 var SC_DEBUG_FLG = true;
@@ -17,4 +17,4 @@ var SYS_ID = 0;
 
 
 //MODEL CONTROL
-const AGM_INIT_NUM = 64;
+const AGM_INIT_NUM = 16;
