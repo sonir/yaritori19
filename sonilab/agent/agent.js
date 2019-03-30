@@ -13,7 +13,7 @@ const AG_VIEW_DEF = 0.25//0.025//0.05;
 var AG_VIEW_MOD = 0.0;
 if(PERFORMANCE_MODE){
 
-  AG_VIEW_MOD = 35.0;
+  AG_VIEW_MOD = 0.5;
 
 }else{
 
@@ -99,19 +99,19 @@ class Agent {
 
 
       case STATE.CALM:
-        v = createVector( (random(-1,1)*SPD_MOD) , (random(-1,1)*SPD_MOD) );
+        v = createVector( (random(-1,1)*SPD_MOD*AG_MOV_CTRL) , (random(-1,1)*SPD_MOD*AG_MOV_CTRL) );
         this.spd = AgTools.calVel(v, this.spd);
         break;
 
       case STATE.RUN:
         theta = cal_deg(this.nearest_ag.position.x , this.nearest_ag.position.y , this.position.x , this.position.y);
-        v = cal_pos(theta, random(0.0 , this.mov)*SPD_RUNCHASE_MOD);
+        v = cal_pos(theta, random(0.0 , this.mov)*SPD_RUNCHASE_MOD*AG_MOV_CTRL);
         reaction(v,this);
         break;
 
       case STATE.CHASE:
         theta = cal_deg(this.position.x , this.position.y  , this.nearest_ag.position.x , this.nearest_ag.position.y);
-        v = cal_pos(theta, random(0.0 , this.mov)*SPD_RUNCHASE_MOD);
+        v = cal_pos(theta, random(0.0 , this.mov)*SPD_RUNCHASE_MOD*AG_MOV_CTRL);
         reaction(v,this);
         // DMG check
         if(this.distance_with_nearest<AG_DISTANCE_FOR_DMG){

@@ -7,7 +7,6 @@ var sc2 = sc2 || {};
   _.setup = function(e){
 
     // print('setup:sc2')
-    reportSetup();
     agmInit();
 
 
@@ -51,6 +50,19 @@ var sc2 = sc2 || {};
   }
   document.addEventListener('/yaritori/post', sc2.posted);
 
+
+  //Event handler for performers feed
+  _.feed = function(e){
+
+    if(e.arg[1]==SYS_ID){
+
+      // print("feed!!" , str(e.arg[1]), e.arg[2]);
+      AG_MOV_CTRL = 1.0 + (e.arg[2]*AG_MOV_CTRL_MAX);
+
+    }
+
+  }
+  document.addEventListener(OSC_ADR_FEED , sc2.feed);
 
 
 })(sc2);

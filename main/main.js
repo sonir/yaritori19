@@ -30,6 +30,7 @@ function setup() {
   //Init Scene
   Scene.setup();
 
+  // frameRate(300);
 
   //Do test
   test();

@@ -74,17 +74,17 @@ var AgTools = AgTools || {};
      vel.add( vec );
 
      //SPD Limitter
-     if(vel.x>SPD_MAX){
-       vel.x = SPD_MAX;
-     }else if(vel.x <= (SPD_MAX*-1) ){
+     if(vel.x>SPD_MAX*AG_MOV_CTRL){
+       vel.x = SPD_MAX*AG_MOV_CTRL;
+     }else if(vel.x <= (SPD_MAX*AG_MOV_CTRL*-1) ){
        vel.x = (SPD_MAX*-1);
      }else{
      }
 
-     if(vel.y>SPD_MAX){
-       vel.y = SPD_MAX;
-     }else if(vel.y <= (SPD_MAX*-1) ){
-       vel.y = (SPD_MAX*-1);
+     if(vel.y>SPD_MAX*AG_MOV_CTRL){
+       vel.y = SPD_MAX*AG_MOV_CTRL;
+     }else if(vel.y <= (SPD_MAX*AG_MOV_CTRL*-1) ){
+       vel.y = (SPD_MAX*AG_MOV_CTRL*-1);
      }else{
      }
 
