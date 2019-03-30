@@ -22,7 +22,7 @@ function preload() { //SOUND Loading
 function setup() {
 
   //scSetupAuto ();
-  scSetupSemiAuto(SC_SIZE.IPHONE_X);
+  scSetupSemiAuto(SC_SIZE.IPHONE_XW);
 
   //Pramset of sounds
   Snd.setup();
