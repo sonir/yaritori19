@@ -1,6 +1,6 @@
 //Agents
 let agents = [];
-
+let ev_report = new CustomEvent("/sys/report");
 
 function agmUpdate(){
 
@@ -20,6 +20,10 @@ function agmUpdate(){
     agmCycle(agents[i]);
     drawAgent(agents[i].position.x, agents[i].position.y, agents[i].size, agents[i]);
   }
+
+  ev_report.density = agents.length/AG_MAX;
+  document.dispatchEvent(ev_report);
+  // print(report_interval+=REPORT_INC);
 
 }
 

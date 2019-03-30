@@ -14,7 +14,8 @@ var FIRST_SCENE = 1;
 //SYSTEM_VARIABLES
 var UNIT_NUM = 4; //The iOS device max
 var SYS_ID = 0;
-
+var INTERVAL_OF_SYS_REPORT = 1000;
 
 //MODEL CONTROL
+const AG_MAX = 100;
 const AGM_INIT_NUM = 32;

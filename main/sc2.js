@@ -7,7 +7,9 @@ var sc2 = sc2 || {};
   _.setup = function(e){
 
     // print('setup:sc2')
+    reportSetup();
     agmInit();
+
 
   }
   document.addEventListener('/setup', sc2.setup);

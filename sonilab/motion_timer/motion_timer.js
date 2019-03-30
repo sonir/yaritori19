@@ -31,5 +31,12 @@ class MotionTimer {
   }
 
 
+  reset(){
+
+    this.set(this.duration);
+
+  }
+
+
 
 }

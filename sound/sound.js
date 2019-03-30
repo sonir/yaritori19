@@ -115,7 +115,7 @@ var Snd = Snd || {};
     glitch.playWithRandom();
 
     let tmp = new CustomEvent('/send');
-    tmp.data = '/foo 137 13.9';
+    tmp.data = '/sound/trg ' + SYS_ID;
     document.dispatchEvent(tmp);
 
   }

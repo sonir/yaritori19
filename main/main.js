@@ -30,6 +30,7 @@ function setup() {
   //Init Scene
   Scene.setup();
 
+
   //Do test
   test();
 
