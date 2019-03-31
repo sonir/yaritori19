@@ -17,11 +17,11 @@ var SYS_ID = 0;
 var INTERVAL_OF_SYS_REPORT = 1000;
 
 //CONTROL ROUTING
-const OSC_ADR_FEED = '/ch6'
-const KEY_VAL_FOR_FEED = 1.95;//7.8; //FIX for change speed related ewith ag_num
+const OSC_ADR_FEED = '/ch6';
+const KEY_VAL_FOR_FEED = 1.95;//7.8;//1.95;//7.8; //FIX for change speed related ewith ag_num
 
 //MODEL CONTROL
 const AG_MOV_CTRL_MAX = 100.0;
 var AG_MOV_CTRL = 1.0;
 const AG_MAX = 100;
-const AGM_INIT_NUM = 15;
+const AGM_INIT_NUM = 0;
