@@ -11,13 +11,17 @@ var STATE = {
 //Default Params
 const AG_VIEW_DEF = 0.25//0.025//0.05;
 var AG_VIEW_MOD = 0.0;
+var AG_DMG_TICK = 0.00000005;//0.0000035;
+
 if(PERFORMANCE_MODE){
 
   AG_VIEW_MOD = 0.5;
+  AG_DMG_TICK = 0.000005;
 
 }else{
 
   AG_VIEW_MOD = 0.25;//1.0;
+  AG_DMG_TICK = 0.00000005;
 
 }
 
@@ -26,7 +30,8 @@ const AG_NEAREST_DEF = -1;
 const AG_STSTE_DEF = STATE.CALM;
 const AG_DISTANT_WITH_NEAREST_DEF = 0.0;
 const AG_DISTANCE_FOR_DMG = AG_VIEW_DEF*0.3;
-const AG_DMG_TICK = 0.00000005;//0.0000035;
+
+
 const AG_DEATH_THREATH =0.00005; //0.0001
 
 //Fix or MOD for Interactions
@@ -59,7 +64,7 @@ class Agent {
     //Basic Params
     this.size = random(0.01 , 1.0) * SIZE_MOD;
     this.view = random();//AG_VIEW_DEF;
-    this.mov = AG_MOV_DEF;
+    this.mov = random()*AG_MOV_DEF;
     this.nearest_id =AG_NEAREST_DEF;
     this.nearest_ag = null;
     this.distance_with_nearest = AG_DISTANT_WITH_NEAREST_DEF;

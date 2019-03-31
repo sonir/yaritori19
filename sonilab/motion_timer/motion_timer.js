@@ -6,6 +6,7 @@ class MotionTimer {
 
     print('const!!!');
     this.set(duration_ms);
+    this.rst = 0.0;
 
   }
 
@@ -26,7 +27,9 @@ class MotionTimer {
 
     this.now = millis();
     this.elapse = this.now - this.born_t;
-    return (this.elapse*this.tick);
+    this.rst = this.elapse*this.tick;
+    if(this.rst > 1.0)this.rst = 1.0;
+    return this.rst;
 
   }
 
