@@ -47,8 +47,6 @@ function draw() {
   //Update Scenes
   Scene.update();
   Scene.draw();
-  // AG_MOV_CTRL = 1.0;
-  // print(AG_MOV_CTRL);
 
 
 }
