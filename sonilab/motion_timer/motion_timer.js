@@ -4,7 +4,6 @@ class MotionTimer {
 
   constructor(duration_ms){
 
-    print('const!!!');
     this.set(duration_ms);
     this.rst = 0.0;
 
@@ -13,7 +12,6 @@ class MotionTimer {
 
   set(duration_ms){
 
-    print('set');
     this.born_t = millis();
     this.duration = duration_ms;
     this.tick = 1.0/duration_ms;

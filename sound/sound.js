@@ -111,7 +111,6 @@ var Snd = Snd || {};
 
   _.trg = function(e){
 
-    // s1.play();
     glitch.playWithRandom();
 
     let tmp = new CustomEvent('/send');

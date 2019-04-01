@@ -4,6 +4,7 @@ var sc2 = sc2 || {};
 
   let uid = 1;
   let feed_val = 0.0;
+  
   // let feedTimer = new MotionTimer(500);
 
   _.setup = function(e){
@@ -53,22 +54,6 @@ var sc2 = sc2 || {};
   document.addEventListener('/yaritori/post', sc2.posted);
 
 
-  //Event handler for performers feed
-  _.feed = function(e){
-
-    if(e.arg[1]==SYS_ID){
-
-      // print("FEED" , arg[1]);
-      // feed_val = (KEY_VAL_FOR_FEED*agm_density);
-
-      // feed_val = e.arg[2]*(KEY_VAL_FOR_FEED*agm_density);
-      // print('FB:' , KEY_VAL_FOR_FEED*agm_density);
-      // AG_MOV_CTRL = 1.0 + (feed_val*AG_MOV_CTRL_MAX);
-
-    }
-
-  }
-  document.addEventListener(OSC_ADR_FEED , sc2.feed);
 
 
 })(sc2);
