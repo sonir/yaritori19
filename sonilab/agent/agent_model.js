@@ -1,6 +1,7 @@
 //Agents
 let agents = [];
 let ev_report = new CustomEvent("/sys/report");
+let ev_draw = new CustomEvent("/draw_agent");
 let agm_density = 0.0;
 
 
@@ -21,7 +22,9 @@ function agmUpdate(){
   for(let i = 0; i<agents.length; i++){
     if(deadCheck(agents[i]))continue;
     agmCycle(agents[i]);
-    drawAgent(agents[i].position.x, agents[i].position.y, agents[i].size, agents[i]);
+    ev_draw.ag = agents[i];
+    document.dispatchEvent(ev_draw);
+    // drawAgent(agents[i].position.x, agents[i].position.y, agents[i].size, agents[i]);
   }
 
   ev_report.density = agents.length/AG_MAX;

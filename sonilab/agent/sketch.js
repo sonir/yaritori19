@@ -160,5 +160,29 @@ function touchEnded() {
 
   }
 
+}
+
+
+
+function drawAgent(e){
+
+  let ag = e.ag;
+
+  push();
+  ////////////////////////
+
+  translate( cal_x(ag.position.x) , cal_y(ag.position.y) );
+
+  noFill();
+  stroke(ag.color);
+  // square(cal_x(0.0)-(ag.size*0.5), cal_y(0.0)-(ag.size*0.5), ag.size);
+  circle(cal_x(0.0), cal_y(0.0), ag.size*850);
+  // //Draw View
+  circle(cal_x(0.0), cal_y(0.0), wd*ag.view*AG_VIEW_MOD);
+  text(str(ag.state), 0.0, 0.0);
+
+  ////////////////////////
+  pop();
 
 }
+document.addEventListener('/draw_agent' , drawAgent);

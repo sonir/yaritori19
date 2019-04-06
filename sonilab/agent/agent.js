@@ -156,10 +156,10 @@ class Agent {
     }
 
     //Update node positions
-    this.updateNodesPosition();
-    let tmp = new CustomEvent('/life_motion');
-    tmp.ag = this;
-    document.dispatchEvent(tmp);
+    // this.updateNodesPosition();
+    // let tmp = new CustomEvent('/life_motion');
+    // tmp.ag = this;
+    // document.dispatchEvent(tmp);
     /////
   }
 

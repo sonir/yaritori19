@@ -2,6 +2,7 @@
 
 //MODE
 var PERFORMANCE_MODE = true;
+var TEST_MODE = true;
 
 //SCREEN SETUPS
 var SC_DEBUG_FLG = true;
