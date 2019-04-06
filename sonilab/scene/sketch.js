@@ -21,9 +21,6 @@ function preload() { //SOUND Loading
 
 function setup() {
 
-  wd = windowWidth;
-  ht = windowHeight;
-  createCanvas(windowWidth, windowHeight);
 
 
   test();

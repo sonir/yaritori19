@@ -32,6 +32,13 @@ class MotionTimer {
   }
 
 
+  updateInvert(){
+
+    return 1 - update();
+
+  }
+
+
   reset(){
 
     this.set(this.duration);
