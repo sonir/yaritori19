@@ -10,7 +10,7 @@ var STATE = {
 
 //Default Params
 const AG_VIEW_DEF = 0.25//0.025//0.05;
-var AG_VIEW_MOD = 0.0;
+var AG_VIEW_MOD = 1.0;
 var AG_DMG_TICK = 0.00000005;//0.0000035;
 
 if(PERFORMANCE_MODE){
@@ -155,6 +155,9 @@ class Agent {
 
     //Update node positions
     this.updateNodesPosition();
+    let tmp = new CustomEvent('/life_motion');
+    tmp.ag = this;
+    document.dispatchEvent(tmp);
     /////
   }
 

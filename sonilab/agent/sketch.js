@@ -1,6 +1,6 @@
 var wd = 0;
 var ht = 0;
-const NODE_SIZE = 80;
+// const NODE_SIZE = 80;
 
 
 var troubled = false;
@@ -59,7 +59,7 @@ function test(){
   let ag_for_view = new Agent(0);
   ag_for_view.view = 0.137;
   try{
-    if(AgTools.isViewRange(ag_for_view, 0.136)!= true){
+    if(AgTools.isViewRange(ag_for_view, (0.136*AG_VIEW_MOD) )!= true){
       throw new Error('ERR ::isViewRange()');
     }
   }catch(e){
@@ -67,7 +67,7 @@ function test(){
     troubled = true;
   }
   try{
-    if(AgTools.isViewRange(ag_for_view, 0.138)!= false){
+    if(AgTools.isViewRange(ag_for_view, (0.138*AG_VIEW_MOD) )!= false){
       throw new Error('ERR ::isViewRange()');
     }
   }catch(e){
@@ -109,7 +109,7 @@ function setup() {
     // scSetupAuto ();
     scSetupSemiAuto(SC_SIZE.IPHONE_X);
 
-  agm_init();
+  agmInit();
   test();
 
 }
@@ -129,8 +129,9 @@ function draw() {
   if(troubled != true){
 
     checkScreen(true);
-    agm_update();
-    ags_state_check();
+    agmUpdate();
+
+    agmStateCheck();
 
   }else{
 

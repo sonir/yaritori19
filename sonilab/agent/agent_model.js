@@ -3,6 +3,8 @@ let agents = [];
 let ev_report = new CustomEvent("/sys/report");
 let agm_density = 0.0;
 
+
+
 function agmUpdate(){
 
   let deadCheck = function(ag){
@@ -95,7 +97,7 @@ function agmStateCheck(){
 
   }
 
-  scount++;
+  // scount++;
 
 }
 
