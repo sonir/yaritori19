@@ -44,7 +44,7 @@ const SPD_MAX = 0.00026;//0.00025;
 
 const AG_NODE_MAX = 7;
 const AG_NODE_MIN = 3;
-const AG_ANIM_SPD = 0.03; //0.03
+// const AG_ANIM_SPD = 0.3;//0.03; //0.03
 const AG_ANIM_LIM = 5.0;
 
 const NODE_SIZE = 80;
@@ -77,10 +77,12 @@ class Agent {
 
     //Draw
     this.nodes = [AG_NODE_MAX];
+    this.nodes_now = [AG_NODE_MAX];
     this.node_seeds = [AG_NODE_MAX]; //make seeds for animation
     this.node_count = Math.round( random(AG_NODE_MIN , AG_NODE_MAX) );
     for(let i=0; i<this.node_count; i++){
       this.nodes[i] = createVector( random(-1.0 , 1.0) , random(-1.0 , 1.0) );
+      this.nodes_now[i] = this.nodes[i]; //Init the node position array for animation with same value of the origin
       this.node_seeds[i] = createVector( random(0.0 , 1.0) , random(0.0 , 1.0) );
     }
 
@@ -162,18 +164,17 @@ class Agent {
   }
 
 
-  updateNodesPosition(){
-
-    for(let i=0; i<this.node_count; i++){
-
-      this.nodes[i].x += ( AgTools.scale2amp( noise(this.node_seeds[i].x) )*AG_ANIM_SPD );
-      this.nodes[i].y += ( AgTools.scale2amp( noise(this.node_seeds[i].y) )*AG_ANIM_SPD );
-      this.node_seeds[i].x += random(0.01, 0.04);
-      this.node_seeds[i].y += random(0.01, 0.04);
-
-    }
-
-  }
+  // updateNodesPosition(){
+  //
+  //   for(let i=0; i<this.node_count; i++){
+  //       this.nodes[i].x += ( AgTools.scale2amp( noise(this.node_seeds[i].x) )*AG_ANIM_SPD );
+  //       this.nodes[i].y += ( AgTools.scale2amp( noise(this.node_seeds[i].y) )*AG_ANIM_SPD );
+  //       this.node_seeds[i].x += random(0.01, 0.04);
+  //       this.node_seeds[i].y += random(0.01, 0.04);
+  //
+  //   }
+  //
+  // }
 
 
   updateState(current){

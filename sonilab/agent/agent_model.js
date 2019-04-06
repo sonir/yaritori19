@@ -104,53 +104,53 @@ function agmStateCheck(){
 
 //////////////////////////////////////////////////////
 
-function drawAgent(x, y, scale, ag) {
-
-
-  push();
-  ////////////////////////
-
-  translate( cal_x(x) , cal_y(y) );
-  //square(0,0,NODE_SIZE*scale);
-
-
-  // Draw Nodes
-  noFill();
-  stroke(ag.color);
-  let size = ag.size*1000;
-  square(cal_x(0.0)-(size*0.5), cal_y(0.0)-(size*0.5), size);
-  circle(cal_x(0.0), cal_y(0.0), 2);
-  //Draw View
-  circle(cal_x(0.0), cal_y(0.0), wd*ag.view*AG_VIEW_MOD);
-  text(str(ag.state), 0.0, 0.0);
-  if(ag.uid==0)  circle(cal_x(0.0), cal_y(0.0), wd*ag.view*AG_VIEW_MOD*0.5);
-
-  //draw Nodes
-  // for(let i=0; i<ag.node_count;i++){
-  //
-  //   let p1x = ag.nodes[i].x;
-  //   let p1y = ag.nodes[i].y;
-  //   let p1x_scaled = p1x*scale*0.5;
-  //   let p1y_scaled = p1y*scale*0.5;
-  //
-  //
-  //   noStroke();
-  //   //COLOR TEST
-  //   fill(ag.color);
-  //   ellipse(cal_x(p1x_scaled), cal_y(p1y_scaled), NODE_SIZE*scale, NODE_SIZE*scale);
-  //
-  //   stroke(ag.color);
-  //   if(i!=0){
-  //
-  //     p2x_scaled = ag.nodes[(i-1)].x*scale*0.5;
-  //     p2y_scaled = ag.nodes[(i-1)].y*scale*0.5;
-  //     line( cal_x(p1x_scaled), cal_y(p1y_scaled), cal_x(p2x_scaled), cal_y(p2y_scaled) );
-  //
-  //   }
-  //
-  // }
-
-  ////////////////////////
-  pop();
-
-}
+// function drawAgent(x, y, scale, ag) {
+//
+//
+//   push();
+//   ////////////////////////
+//
+//   translate( cal_x(x) , cal_y(y) );
+//   //square(0,0,NODE_SIZE*scale);
+//
+//
+//   // Draw Nodes
+//   noFill();
+//   stroke(ag.color);
+//   let size = ag.size*1000;
+//   square(cal_x(0.0)-(size*0.5), cal_y(0.0)-(size*0.5), size);
+//   circle(cal_x(0.0), cal_y(0.0), 2);
+//   //Draw View
+//   circle(cal_x(0.0), cal_y(0.0), wd*ag.view*AG_VIEW_MOD);
+//   text(str(ag.state), 0.0, 0.0);
+//   if(ag.uid==0)  circle(cal_x(0.0), cal_y(0.0), wd*ag.view*AG_VIEW_MOD*0.5);
+//
+//   //draw Nodes
+//   // for(let i=0; i<ag.node_count;i++){
+//   //
+//   //   let p1x = ag.nodes[i].x;
+//   //   let p1y = ag.nodes[i].y;
+//   //   let p1x_scaled = p1x*scale*0.5;
+//   //   let p1y_scaled = p1y*scale*0.5;
+//   //
+//   //
+//   //   noStroke();
+//   //   //COLOR TEST
+//   //   fill(ag.color);
+//   //   ellipse(cal_x(p1x_scaled), cal_y(p1y_scaled), NODE_SIZE*scale, NODE_SIZE*scale);
+//   //
+//   //   stroke(ag.color);
+//   //   if(i!=0){
+//   //
+//   //     p2x_scaled = ag.nodes[(i-1)].x*scale*0.5;
+//   //     p2y_scaled = ag.nodes[(i-1)].y*scale*0.5;
+//   //     line( cal_x(p1x_scaled), cal_y(p1y_scaled), cal_x(p2x_scaled), cal_y(p2y_scaled) );
+//   //
+//   //   }
+//   //
+//   // }
+//
+//   ////////////////////////
+//   pop();
+//
+// }
