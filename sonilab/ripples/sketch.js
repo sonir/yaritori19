@@ -20,6 +20,7 @@ function setup() {
 
 //     scSetupAuto ();
   scSetupSemiAuto(SC_SIZE.IPHONE_X);
+  checkScreen(false);
   test();
 
 }
@@ -30,7 +31,6 @@ function draw() {
 
 
   background(20);
-  checkScreen(true);
 
   // noFill();
 
@@ -52,11 +52,11 @@ function touchEnded() {
   print('touch');
   let tmp = new CustomEvent('/ripples/add');
   let vec = new createVector();
-  vec.x = 0.5;
-  vec.y = 0.5;
+  vec.x = random();
+  vec.y = random();
   tmp.posi = vec;
-  tmp.size = 1.5;
-  tmp.spd = 1000;
+  tmp.size = random();
+  tmp.spd = 1000*random();
   document.dispatchEvent(tmp);
 
 }

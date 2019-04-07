@@ -1,5 +1,7 @@
 const FINISHED_NOTHING = -1;
+const RIPPLE_MAX_NUM = 64;
 var RIPPLE_COLOR = 'white';
+
 
 var Ripples = Ripples || {};
 
@@ -7,16 +9,11 @@ var Ripples = Ripples || {};
 
   let uid = 0;
   let buf = [];
+  let del_count = 0;
 
   _.setup = function(e){
 
     // print('setup:Ripples')
-
-    // buf[0] = 137;
-    // buf[1] = 138;
-    // buf[2] = 139;
-    // Ripples.delOne(1);
-    // print(buf[1]);
 
   }
   document.addEventListener('/setup', Ripples.setup);
@@ -25,8 +22,24 @@ var Ripples = Ripples || {};
 
   _.update = function(e){
 
+    print(buf.length);
     // print('update:Ripples');
-    Ripples.delFinished();
+
+    //DEL ripples over the RIPPLE_MAX_NUM
+    if(del_count){
+
+      for(let i=0; i<del_count; i++){
+
+        //Delete the most oldest element
+        buf.shift();
+
+      }
+
+      //Reset the count
+      del_count = 0;
+
+    }
+
 
   }
   document.addEventListener('/update', Ripples.update);
@@ -35,20 +48,39 @@ var Ripples = Ripples || {};
 
   _.draw = function(e){
 
-    // print(buf.length);
+    noFill();
     for(let i=0; i<buf.length;i++){
 
       Ripples.drawOne(buf[i]);
 
     }
 
-
   }
   document.addEventListener('/draw', Ripples.draw);
 
 
 
+  _.drawOne = function(rp){
+
+    //Init Basic
+    strokeWeight(1.5);
+    // stroke( color(255, 255, 255, 255*(1-rp.now()) ) );
+    stroke( color(255, 255, 255, 255*(1-rp.nowRaw()) ) );
+
+    let size = rp.size*rp.now();
+    circle(cal_x(rp.position.x), cal_y(rp.position.y), cal_x( rp.size*rp.now() ) );
+
+  }
+
+
+
   _.add = function(e){
+
+    if(!Ripples.sizeCheck()){
+
+      del_count++;
+
+    }
 
     let tmp = new Ripple(e.posi , e.size, e.spd);
     buf.push(tmp);
@@ -58,65 +90,10 @@ var Ripples = Ripples || {};
 
 
 
-  _.drawOne = function(rp){
+  _.sizeCheck = function(){
 
-    //Init Basic
-    strokeWeight(1.5);
-    stroke( color(255, 255, 255, 255*(1-rp.now()) ) );
-
-    let size = rp.size*rp.now();
-    circle(cal_x(rp.position.x), cal_y(rp.position.y), cal_x( rp.size*rp.now() ) );
-
-
-  }
-
-
-
-  _.delFinished = function(){
-
-    let finished = null;
-    finished = Ripples.existFinished();
-    print(finished);
-    Ripples.delOne(finished);
-    // while(Ripples.existFinished() != FINISHED_NOTHING){
-    //   finished = Ripples.existFinished();
-    //   print('>del: ' , finished, 'length: ' , buf.length);
-    //   Ripples.delOne(finished);
-    // }
-
-  }
-
-
-
-  _.delOne = function(index){
-
-    if(buf.length>1){
-      buf.splice(index, index);
-    }else if(buf.length==1){
-
-      print('solo!!!!')
-
-    }
-
-    print('delOne:' , index);
-    print('completed remain' , buf.length);
-
-  }
-
-
-  _.existFinished = function(){
-
-    let rst = -1;
-    for(let i=0; i<buf.length; i++){
-
-      if(buf[i].now() >= buf[i].size){
-        rst = i;
-        print('finished one is found. : ' , i, 'now is' , buf[i].now());
-
-      }
-
-    }
-    return rst;
+    if(buf.length>=RIPPLE_MAX_NUM) return false;
+    else return true;
 
   }
 
@@ -143,6 +120,14 @@ class Ripple {
   now(){
 
     return (this.mt.update() * this.size);
+
+  }
+
+
+
+  nowRaw(){
+
+    return this.mt.update();
 
   }
 
