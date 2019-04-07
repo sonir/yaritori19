@@ -2,10 +2,10 @@
 
 //MODE
 var PERFORMANCE_MODE = true;
-var TEST_MODE = true;
+var TEST_MODE = false;
 
 //SCREEN SETUPS
-var SC_DEBUG_FLG = true;
+var SC_DEBUG_FLG = false;
 
 
 //SCENE CONTROL

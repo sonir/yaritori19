@@ -4,7 +4,7 @@ var sc2 = sc2 || {};
 
   let uid = 1;
   let feed_val = 0.0;
-  
+
   // let feedTimer = new MotionTimer(500);
 
   _.setup = function(e){
@@ -54,6 +54,21 @@ var sc2 = sc2 || {};
   document.addEventListener('/yaritori/post', sc2.posted);
 
 
+  //Event Handler for StateChanged for ripple trigger
+  _.stateWasChanged = function (e) {
 
+    let tmp = new CustomEvent('/ripples/add');
+    // let vec = new createVector();
+    let vec = e.ag.position;
+    // vec.x = random();
+    // vec.y = random();
+    tmp.posi = vec;
+    tmp.size = e.ag.size*18.0;
+    tmp.spd = 250+( 750*random() );
+    document.dispatchEvent(tmp);
+
+
+  }
+  document.addEventListener('/state_changed' , sc2.stateWasChanged);
 
 })(sc2);

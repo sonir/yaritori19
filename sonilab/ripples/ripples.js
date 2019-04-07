@@ -1,5 +1,5 @@
 const FINISHED_NOTHING = -1;
-const RIPPLE_MAX_NUM = 64;
+const RIPPLE_MAX_NUM = 128;
 var RIPPLE_COLOR = 'white';
 
 
@@ -22,8 +22,8 @@ var Ripples = Ripples || {};
 
   _.update = function(e){
 
-    print(buf.length);
     // print('update:Ripples');
+    // print(buf.length); //Check ring buffer
 
     //DEL ripples over the RIPPLE_MAX_NUM
     if(del_count){

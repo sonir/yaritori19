@@ -92,6 +92,7 @@ function agmStateCheck(){
     if(agents[i].state != agents[i].prestate){
 
       let tmp = new CustomEvent('/state_changed');
+      tmp.ag =agents[i];
       // print(scount + " SND[" , i , "] " , agents[i].state , " : " , agents[i].prestate);
       document.dispatchEvent(tmp);
 

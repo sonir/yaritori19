@@ -23,6 +23,7 @@ function setup() {
 
   //scSetupAuto ();
   scSetupSemiAuto(SC_SIZE.IPHONE_X);
+  checkScreen(SC_DEBUG_FLG);
 
   //Pramset of sounds
   Snd.setup();
@@ -42,7 +43,6 @@ function setup() {
 function draw() {
 
   background(20);
-  checkScreen(SC_DEBUG_FLG);
 
   //Update Scenes
   Scene.update();
@@ -79,47 +79,47 @@ function deviceTurned(){
 
 
 
-
-function calVel(vel){
-
-   vel.add( createVector( (random(-1,1)*SPD_MOD) , (random(-1,1)*SPD_MOD) ) );
-
-   //SPD Limitter
-   if(vel.x>SPD_MAX){
-
-     vel.x = SPD_MAX;
-     // print('LIM_A : ' + vel.x);
-
-   }else if(vel.x <= (SPD_MAX*-1) ){
-
-     vel.x = (SPD_MAX*-1);
-     // print('LIM_B : ' + vel.x);
-
-   }else{
-
-     // print('LIM_ZERO1 : ' + vel.x);
-
-   }
-
-   if(vel.y>SPD_MAX){
-
-     vel.y = SPD_MAX;
-     // print('LIM_C : ' + vel.y);
-
-   }else if(vel.y <= (SPD_MAX*-1) ){
-
-     vel.y = (SPD_MAX*-1);
-     // print('LIM_D : ' + vel.y);
-
-   }else{
-
-     // print('LIM_ZERO2 : ' + vel.y);
-
-   }
-
-   return vel;
-
-}
+//
+// function calVel(vel){
+//
+//    vel.add( createVector( (random(-1,1)*SPD_MOD) , (random(-1,1)*SPD_MOD) ) );
+//
+//    //SPD Limitter
+//    if(vel.x>SPD_MAX){
+//
+//      vel.x = SPD_MAX;
+//      // print('LIM_A : ' + vel.x);
+//
+//    }else if(vel.x <= (SPD_MAX*-1) ){
+//
+//      vel.x = (SPD_MAX*-1);
+//      // print('LIM_B : ' + vel.x);
+//
+//    }else{
+//
+//      // print('LIM_ZERO1 : ' + vel.x);
+//
+//    }
+//
+//    if(vel.y>SPD_MAX){
+//
+//      vel.y = SPD_MAX;
+//      // print('LIM_C : ' + vel.y);
+//
+//    }else if(vel.y <= (SPD_MAX*-1) ){
+//
+//      vel.y = (SPD_MAX*-1);
+//      // print('LIM_D : ' + vel.y);
+//
+//    }else{
+//
+//      // print('LIM_ZERO2 : ' + vel.y);
+//
+//    }
+//
+//    return vel;
+//
+// }
 
 
 //////////////////////////////////////
