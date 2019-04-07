@@ -63,8 +63,8 @@ var sc2 = sc2 || {};
     // vec.x = random();
     // vec.y = random();
     tmp.posi = vec;
-    tmp.size = e.ag.size*18.0;
-    tmp.spd = 250+( 750*random() );
+    tmp.size = e.ag.size*11.0;
+    tmp.spd = 400+( 600*random() );
     document.dispatchEvent(tmp);
 
 
