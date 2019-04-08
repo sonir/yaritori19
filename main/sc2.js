@@ -79,13 +79,14 @@ var sc2 = sc2 || {};
 
 
       let node_index = 0;
-      for(let i=INDEX_OF_NODE; i<(node_count*2); i=i+2){
+      for(let i=0; i<(node_count*2); i=i+2){
 
-        shape.nodes[node_index] = createVector( e.arg[i] , e.arg[i+1] );
+        // print('node_index:' + node_index + ' x:' + e.arg[i] + ' y:' + e.arg[i+1]);
+        shape.nodes[node_index] = createVector( e.arg[i+INDEX_OF_NODE] , e.arg[i+1+INDEX_OF_NODE] );
         node_index+=1;
 
       }
-      print('x is' , shape.nodes[0].x);
+      //print('x is' , shape.nodes[0].x);
       // for(int i=INDEX_OF_NODE+1; i<(shape.node_count*2)+1; i=i+2){
       //     shape.nodes[node_index].x = m.getArgAsFloat(i);
       //     shape.nodes[node_index].y = m.getArgAsFloat(i+1);
@@ -93,14 +94,14 @@ var sc2 = sc2 || {};
       // }
 
       let edge_index = 0;
-      for(let i=index_of_edge; i<( (edge_count*2) ); i=i+2){
+      for(let i=0; i<( (edge_count*2) ); i=i+2){
 
           // shape.edges[edge_index].node_id_st = e.arg[ i ];
           // shape.edges[edge_index].node_id_ed = e.arg[ i + 1 ];
           // shape.edges[edge_index] = edge_index;
           let obj = new Object();
-          obj.node_id_st = e.arg[ i ];
-          obj.node_id_ed = e.arg[ i+1 ];
+          obj.node_id_st = e.arg[ i+index_of_edge ];
+          obj.node_id_ed = e.arg[ i+1+index_of_edge ];
           shape.edges[edge_index] = obj;
           edge_index+=1;
 
@@ -118,13 +119,15 @@ var sc2 = sc2 || {};
       print('arg4: (node0.x)' + shape.nodes[0].x);
       print('arg5: (node0.y)' + shape.nodes[0].y);
       print('arg6: (edge_count)' + Object.keys(shape.edges).length);
-      print('arg7a: (edge0 st)' + e.arg[index_of_edge].node_id_st);
-      print('arg7b: (edge0 ed)' + e.arg[index_of_edge].node_id_st);
+      print('arg7a: (edge0 st)' + shape.edges[0].node_id_st);
+      print('arg7b: (edge0 ed)' + shape.edges[0].node_id_ed);
       print('arg8: (h)' + index_of_hsv);
 
 
 
       let tmp = new CustomEvent('/convert_to_agent');
+      tmp.shape = shape;
+      document.dispatchEvent(tmp);
       // let tmp = new Agent(agents.length);
       // agmAdd(tmp);
     }
@@ -189,5 +192,14 @@ var sc2 = sc2 || {};
 
   }
   document.addEventListener('/state_changed' , sc2.stateWasChanged);
+
+
+
+  _.addConvertedAgent = function (e) {
+
+    agmAdd(e.ag);
+
+  }
+  document.addEventListener('/agent/converted' , sc2.addConvertedAgent);
 
 })(sc2);
