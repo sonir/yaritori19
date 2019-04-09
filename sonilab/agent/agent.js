@@ -92,12 +92,11 @@ class Agent {
       let obj = new Object();
       obj.node_id_st = i;
       obj.node_id_ed = i+1;
-      // obj.node_id_ed = 0;
 
       //Make loop
       if(i == (this.nodes.length-1)){
 
-        obj.node_ide_ed = 0;
+        obj.node_id_ed = 0;
 
       }
 
@@ -174,26 +173,9 @@ class Agent {
       this.position.y = 1.0;
     }
 
-    //Update node positions
-    // this.updateNodesPosition();
-    // let tmp = new CustomEvent('/life_motion');
-    // tmp.ag = this;
-    // document.dispatchEvent(tmp);
-    /////
   }
 
 
-  // updateNodesPosition(){
-  //
-  //   for(let i=0; i<this.node_count; i++){
-  //       this.nodes[i].x += ( AgTools.scale2amp( noise(this.node_seeds[i].x) )*AG_ANIM_SPD );
-  //       this.nodes[i].y += ( AgTools.scale2amp( noise(this.node_seeds[i].y) )*AG_ANIM_SPD );
-  //       this.node_seeds[i].x += random(0.01, 0.04);
-  //       this.node_seeds[i].y += random(0.01, 0.04);
-  //
-  //   }
-  //
-  // }
 
 
   updateState(current){

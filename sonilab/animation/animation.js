@@ -68,6 +68,38 @@ var Animation = Animation || {};
 
 
 
+  _.drawAgentOld = function(e){
+
+    let ag = e.ag;
+
+    push();
+    ////////////////////////
+
+    translate( cal_x(ag.position.x) , cal_y(ag.position.y) );
+
+    if(TEST_MODE){
+
+      noFill();
+      stroke(ag.color);
+      // square(cal_x(0.0)-(ag.size*0.5), cal_y(0.0)-(ag.size*0.5), ag.size);
+      circle(cal_x(0.0), cal_y(0.0), ag.size*850);
+      // //Draw View
+      circle(cal_x(0.0), cal_y(0.0), wd*ag.view*AG_VIEW_MOD);
+      text(str(ag.state), 0.0, 0.0);
+
+    }
+    //Draw photo nodes
+    Animation.drawNodes(ag);
+    Animation.drawEdges(ag);
+    ////////////////////////
+    pop();
+
+
+  }
+  document.addEventListener('/draw_agent/old' , Animation.drawAgentOld);
+
+
+
   _.drawEdges = function(ag){
 
     // print('edges' , Object.keys(ag.edges).length, 'nodes' , ag.nodes.length);
@@ -78,12 +110,12 @@ var Animation = Animation || {};
       let p2 = ag.nodes_now[ag.edges[i].node_id_ed];
       // print('P2:' , p2 , 'node_id_ed: ' , ag.edges[i].node_id_ed, 'MAX: ' , AG_NODE_MAX);
       //
-      // p1x_scaled = p1.x*ag.size*0.5;
-      // p1y_scaled = p1.y*ag.size*0.5;
-      // p2x_scaled = p2.x*ag.size*0.5;
-      // p2y_scaled = p2.y*ag.size*0.5;
+      p1x_scaled = p1.x*ag.size*0.5;
+      p1y_scaled = p1.y*ag.size*0.5;
+      p2x_scaled = p2.x*ag.size*0.5;
+      p2y_scaled = p2.y*ag.size*0.5;
 
-      // line( cal_x(p1x_scaled), cal_y(p1y_scaled), cal_x(p2x_scaled), cal_y(p2y_scaled) );
+      line( cal_x(p1x_scaled), cal_y(p1y_scaled), cal_x(p2x_scaled), cal_y(p2y_scaled) );
 
     }
 
