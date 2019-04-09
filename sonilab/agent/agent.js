@@ -61,7 +61,7 @@ class Agent {
     this.state = AG_STSTE_DEF;
     this.prestate = AG_STSTE_DEF;
     this.nodes_update = false; //mutex flag for nodesUpdate
-    this.edges_update = false; //mutex flag for edgesUpdate
+    // this.edges_update = false; //mutex flag for edgesUpdate
 
     //Basic Params
     this.size = random(0.01 , 1.0) * SIZE_MOD;
@@ -191,7 +191,6 @@ class Agent {
 
     this.nodes_tmp = [];
     this.nodes_tmp = nds.slice(); //Copy the array
-    this.nodes_update = true;
 
   }
 
@@ -210,9 +209,7 @@ class Agent {
       let tmp = createVector( random(0.0 , 1.0) , random(0.0 , 1.0) );
       this.node_seeds.push(tmp);
 
-    }
-
-    this.nodes_update = false;
+    } //end of for
 
   }
 
@@ -232,9 +229,35 @@ class Agent {
 
     this.edges = [];
     this.edges = this.edges_tmp.slice();
-    this.edges_update = false;
 
   }
+
+
+  updateShape(nds,eds){
+
+    this.updateNodes(nds);
+    this.updateEdges(eds);
+    this.flgShapeUpdate2True();
+
+
+  }
+
+
+
+  flgShapeUpdate2True(){
+
+    this.nodes_update = true;
+
+  }
+
+
+
+  flgShapeUpdate2False(){
+
+    this.nodes_update = false;
+
+  }
+
 
 
   updateColor(clr){

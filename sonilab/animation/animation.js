@@ -122,13 +122,17 @@ var Animation = Animation || {};
 
   _.drawNodes = function(ag){
 
-    if(ag.nodes_update)ag.updateNodesExe();
-    if(ag.edges_update)ag.updateEdgesExe();
+    //nodesUpdate
+    if(ag.nodes_update==true){
+      ag.updateNodesExe();
+      ag.updateEdgesExe();
+      ag.flgShapeUpdate2False(); //release the mutex flag
+    }
 
     Animation.updateNodePosition(ag);
 
     //draw Nodes
-    for(let i=0; i<ag.node_count;i++){
+    for(let i=0; i<ag.nodes.length;i++){
 
       p1x = ag.nodes_now[i].x;
       p1y = ag.nodes_now[i].y;

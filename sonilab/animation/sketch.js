@@ -44,13 +44,13 @@ function draw() {
 
 function touchEnded() {
 
-  print('touch');
+  print('touch!!');
   let nodes = [];
   nodes.push( createVector(1.0 , 1.0) );
   nodes.push( createVector(1.0 , -1.0) );
   nodes.push( createVector(-1.0 , -1.0) );
   nodes.push( createVector(-1.0 , 1.0) );
-  ag.updateNodes(nodes);
+  // ag.updateNodes(nodes);
 
   let edges = [];
   for(let i=0; i<4; i++){
@@ -61,6 +61,7 @@ function touchEnded() {
     if(i==3)obj.node_id_ed = 0;
     edges.push(obj);
   }
-  ag.updateEdges(edges);
+  // ag.updateEdges(edges);
+  ag.updateShape(nodes,edges);
 
 }
