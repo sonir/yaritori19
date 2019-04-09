@@ -173,8 +173,7 @@ class Agent {
       this.position.y = 1.0;
     }
 
-  }
-
+  } //end of agent
 
 
 
@@ -185,6 +184,40 @@ class Agent {
 
   }
 
+
+
+  updateNodes(nds){
+
+    this.nodes = [];
+    this.nodes_now = [];
+    this.node_seeds = [];
+    this.nodes = nds.slice(); //Copy the array
+    this.nodes_now = nds.slice();
+
+    for(let i=0; i<this.nodes.length;i++){
+
+      let tmp = createVector( random(0.0 , 1.0) , random(0.0 , 1.0) );
+      this.node_seeds.push(tmp);
+
+    }
+
+  }
+
+
+
+  updateEdges(eds){
+
+    this.edges = [];
+    this.edges = eds.slice();
+
+  }
+
+
+  updateColor(clr){
+
+    this.color = clr;
+
+  }
 
 
 

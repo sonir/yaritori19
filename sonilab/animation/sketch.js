@@ -39,3 +39,17 @@ function draw() {
   document.dispatchEvent(tmp);
 
 }
+
+
+
+function touchEnded() {
+
+  print('touch');
+  let nodes = [];
+  nodes.push( createVector(1.0 , 1.0) );
+  nodes.push( createVector(1.0 , -1.0) );
+  nodes.push( createVector(-1.0 , -1.0) );
+  nodes.push( createVector(-1.0 , 1.0) );
+  ag.updateNodes(nodes);
+
+}

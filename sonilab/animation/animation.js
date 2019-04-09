@@ -102,14 +102,11 @@ var Animation = Animation || {};
 
   _.drawEdges = function(ag){
 
-    // print('edges' , Object.keys(ag.edges).length, 'nodes' , ag.nodes.length);
-
     for(let i=0; i<Object.keys(ag.edges).length;i++){
 
       let p1 = ag.nodes_now[ag.edges[i].node_id_st];
       let p2 = ag.nodes_now[ag.edges[i].node_id_ed];
-      // print('P2:' , p2 , 'node_id_ed: ' , ag.edges[i].node_id_ed, 'MAX: ' , AG_NODE_MAX);
-      //
+
       p1x_scaled = p1.x*ag.size*0.5;
       p1y_scaled = p1.y*ag.size*0.5;
       p2x_scaled = p2.x*ag.size*0.5;

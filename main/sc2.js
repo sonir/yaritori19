@@ -88,12 +88,6 @@ var sc2 = sc2 || {};
         node_index+=1;
 
       }
-      //print('x is' , shape.nodes[0].x);
-      // for(int i=INDEX_OF_NODE+1; i<(shape.node_count*2)+1; i=i+2){
-      //     shape.nodes[node_index].x = m.getArgAsFloat(i);
-      //     shape.nodes[node_index].y = m.getArgAsFloat(i+1);
-      //     node_index+=1;
-      // }
 
       let edge_index = 0;
       for(let i=0; i<( (edge_count*2) ); i=i+2){
@@ -109,12 +103,6 @@ var sc2 = sc2 || {};
 
       }
 
-      // for(int i=0;i<( (shape.edge_count*2) );i=i+2){
-      //
-      //     shape.edges[edge_index].node_id_a = m.getArgAsInt32( i + (index_of_edge_count+1) );
-      //     shape.edges[edge_index].node_id_b = m.getArgAsInt32( i + (index_of_edge_count+1) + 1 );
-      //     edge_index+=1;
-      // }
 
       if(TEST_MODE==true){
         print('--STORED SHAPE--')
@@ -135,31 +123,6 @@ var sc2 = sc2 || {};
 
   }
   document.addEventListener('/yaritori/post', sc2.posted);
-
-
-
-
-    // shape.color = m.getArgAsFloat(INDEX_OF_COLOR);
-    // shape.node_count = m.getArgAsInt32(INDEX_OF_NODE);
-    // int index_of_edge_count = (shape.node_count*2)+2;
-    // shape.edge_count = m.getArgAsInt32( index_of_edge_count );
-    //
-    // int node_index = 0;
-    //
-    // for(int i=INDEX_OF_NODE+1; i<(shape.node_count*2)+1; i=i+2){
-    //     shape.nodes[node_index].x = m.getArgAsFloat(i);
-    //     shape.nodes[node_index].y = m.getArgAsFloat(i+1);
-    //     node_index+=1;
-    // }
-    //
-    // int edge_index = 0;
-    // for(int i=0;i<( (shape.edge_count*2) );i=i+2){
-    //
-    //     shape.edges[edge_index].node_id_a = m.getArgAsInt32( i + (index_of_edge_count+1) );
-    //     shape.edges[edge_index].node_id_b = m.getArgAsInt32( i + (index_of_edge_count+1) + 1 );
-    //     edge_index+=1;
-    // }
-
 
 
 
