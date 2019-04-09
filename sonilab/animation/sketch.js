@@ -52,4 +52,15 @@ function touchEnded() {
   nodes.push( createVector(-1.0 , 1.0) );
   ag.updateNodes(nodes);
 
+  let edges = [];
+  for(let i=0; i<4; i++){
+    let obj = new Object();
+    obj.node_id_st = i;
+    obj.node_id_ed = i+1;
+
+    if(i==3)obj.node_id_ed = 0;
+    edges.push(obj);
+  }
+  ag.updateEdges(edges);
+
 }

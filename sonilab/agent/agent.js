@@ -60,6 +60,8 @@ class Agent {
     this.active = true;
     this.state = AG_STSTE_DEF;
     this.prestate = AG_STSTE_DEF;
+    this.nodes_update = false; //mutex flag for nodesUpdate
+    this.edges_update = false; //mutex flag for edgesUpdate
 
     //Basic Params
     this.size = random(0.01 , 1.0) * SIZE_MOD;
@@ -185,14 +187,23 @@ class Agent {
   }
 
 
-
   updateNodes(nds){
+
+    this.nodes_tmp = [];
+    this.nodes_tmp = nds.slice(); //Copy the array
+    this.nodes_update = true;
+
+  }
+
+
+
+  updateNodesExe(){ //actual reflect the received param
 
     this.nodes = [];
     this.nodes_now = [];
     this.node_seeds = [];
-    this.nodes = nds.slice(); //Copy the array
-    this.nodes_now = nds.slice();
+    this.nodes = this.nodes_tmp.slice(); //Copy the array
+    this.nodes_now = this.nodes_tmp.slice();
 
     for(let i=0; i<this.nodes.length;i++){
 
@@ -201,14 +212,27 @@ class Agent {
 
     }
 
+    this.nodes_update = false;
+
   }
 
 
 
   updateEdges(eds){
 
+    this.edges_tmp = [];
+    this.edges_tmp = eds.slice();
+    this.edges_update = true; //flg for mutex
+
+  }
+
+
+
+  updateEdgesExe(){ //actual reflect the received param
+
     this.edges = [];
-    this.edges = eds.slice();
+    this.edges = this.edges_tmp.slice();
+    this.edges_update = false;
 
   }
 

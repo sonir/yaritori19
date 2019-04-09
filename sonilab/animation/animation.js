@@ -122,6 +122,9 @@ var Animation = Animation || {};
 
   _.drawNodes = function(ag){
 
+    if(ag.nodes_update)ag.updateNodesExe();
+    if(ag.edges_update)ag.updateEdgesExe();
+
     Animation.updateNodePosition(ag);
 
     //draw Nodes
@@ -158,8 +161,8 @@ var Animation = Animation || {};
 
   _.updateNodePosition = function (ag){
 
-
-    for(let i=0; i<ag.node_count; i++){
+    // for(let i=0; i<ag.node_count; i++){
+    for(let i=0; i<ag.nodes.length; i++){
 
       //Update the now position with scaled noised param and origin position
       ag.nodes_now[i].x = ag.nodes[i].x + ( AgTools.scale2amp( noise( ag.node_seeds[i].x ) ) * AG_ANIM_RANGE );
