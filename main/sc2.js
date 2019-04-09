@@ -66,16 +66,18 @@ var sc2 = sc2 || {};
       let edge_count = e.arg[index_of_edge_count];
       let index_of_hsv = e.arg[index_of_edge_count*2+7]
 
-      print('arg0 (adr) : ' + e.arg[0]);
-      print('arg1 (uid) : ' + e.arg[1]);
-      print('arg2 (color) : ' + e.arg[2]);
-      print('arg3 (node_count): ' + e.arg[INDEX_OF_NODE_COUNT]);
-      print('arg4: (node0.x)' + e.arg[4]);
-      print('arg5: (node0.y)' + e.arg[5]);
-      print('arg6: (edge_count)' + e.arg[index_of_edge_count]);
-      print('arg7a: (edge0 st)' + e.arg[index_of_edge]);
-      print('arg7b: (edge0 ed)' + e.arg[index_of_edge+1]);
-      print('arg8: (h)' + index_of_hsv);
+      if(TEST_MODE==true){
+        print('arg0 (adr) : ' + e.arg[0]);
+        print('arg1 (uid) : ' + e.arg[1]);
+        print('arg2 (color) : ' + e.arg[2]);
+        print('arg3 (node_count): ' + e.arg[INDEX_OF_NODE_COUNT]);
+        print('arg4: (node0.x)' + e.arg[4]);
+        print('arg5: (node0.y)' + e.arg[5]);
+        print('arg6: (edge_count)' + e.arg[index_of_edge_count]);
+        print('arg7a: (edge0 st)' + e.arg[index_of_edge]);
+        print('arg7b: (edge0 ed)' + e.arg[index_of_edge+1]);
+        print('arg8: (h)' + index_of_hsv);
+      }
 
 
       let node_index = 0;
@@ -114,22 +116,21 @@ var sc2 = sc2 || {};
       //     edge_index+=1;
       // }
 
-      print('--SHAPE--')
-      print('arg3 (node_count): ' + shape.nodes.length);
-      print('arg4: (node0.x)' + shape.nodes[0].x);
-      print('arg5: (node0.y)' + shape.nodes[0].y);
-      print('arg6: (edge_count)' + Object.keys(shape.edges).length);
-      print('arg7a: (edge0 st)' + shape.edges[0].node_id_st);
-      print('arg7b: (edge0 ed)' + shape.edges[0].node_id_ed);
-      print('arg8: (h)' + index_of_hsv);
+      if(TEST_MODE==true){
+        print('--STORED SHAPE--')
+        print('arg3 (node_count): ' + shape.nodes.length);
+        print('arg4: (node0.x)' + shape.nodes[0].x);
+        print('arg5: (node0.y)' + shape.nodes[0].y);
+        print('arg6: (edge_count)' + Object.keys(shape.edges).length);
+        print('arg7a: (edge0 st)' + shape.edges[0].node_id_st);
+        print('arg7b: (edge0 ed)' + shape.edges[0].node_id_ed);
+        print('arg8: (h)' + index_of_hsv);
+      }
 
-
-
+      //Bang event to converted shape to agent
       let tmp = new CustomEvent('/convert_to_agent');
       tmp.shape = shape;
       document.dispatchEvent(tmp);
-      // let tmp = new Agent(agents.length);
-      // agmAdd(tmp);
     }
 
   }

@@ -79,11 +79,30 @@ class Agent {
     this.nodes = [AG_NODE_MAX];
     this.nodes_now = [AG_NODE_MAX];
     this.node_seeds = [AG_NODE_MAX]; //make seeds for animation
+    this.edges = [];
     this.node_count = Math.round( random(AG_NODE_MIN , AG_NODE_MAX) );
     for(let i=0; i<this.node_count; i++){
       this.nodes[i] = createVector( random(-1.0 , 1.0) , random(-1.0 , 1.0) );
       this.nodes_now[i] = this.nodes[i]; //Init the node position array for animation with same value of the origin
       this.node_seeds[i] = createVector( random(0.0 , 1.0) , random(0.0 , 1.0) );
+    }
+    //Make Edges
+    for(let i=0; i<this.nodes.length; i++){
+
+      let obj = new Object();
+      obj.node_id_st = i;
+      obj.node_id_ed = i+1;
+      // obj.node_id_ed = 0;
+
+      //Make loop
+      if(i == (this.nodes.length-1)){
+
+        obj.node_ide_ed = 0;
+
+      }
+
+      this.edges[i]=obj;
+
     }
 
 
@@ -183,6 +202,7 @@ class Agent {
     this.state = current;
 
   }
+
 
 
 
