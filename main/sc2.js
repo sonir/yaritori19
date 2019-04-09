@@ -60,11 +60,11 @@ var sc2 = sc2 || {};
       let my_edges = [];
       let my_color = color(255, 255, 255);
       let shape = new Shape(my_nodes, my_edges, my_color); //Instanciate
-      let node_count = e.arg[INDEX_OF_NODE_COUNT];
+      let node_count = int( e.arg[INDEX_OF_NODE_COUNT] );
       let index_of_edge_count = (node_count*2)+4;
       let index_of_edge = index_of_edge_count+1;
-      let edge_count = e.arg[index_of_edge_count];
-      let index_of_hsv = e.arg[index_of_edge_count*2+7]
+      let edge_count = int( e.arg[index_of_edge_count] );
+      let index_of_hsv = int( e.arg[index_of_edge_count*2+7] );
 
       if(TEST_MODE==true){
         print('arg0 (adr) : ' + e.arg[0]);
@@ -83,8 +83,7 @@ var sc2 = sc2 || {};
       let node_index = 0;
       for(let i=0; i<(node_count*2); i=i+2){
 
-        // print('node_index:' + node_index + ' x:' + e.arg[i] + ' y:' + e.arg[i+1]);
-        shape.nodes[node_index] = createVector( e.arg[i+INDEX_OF_NODE] , e.arg[i+1+INDEX_OF_NODE] );
+        shape.nodes[node_index] = createVector( float(e.arg[i+INDEX_OF_NODE]) , float(e.arg[i+1+INDEX_OF_NODE]) );
         node_index+=1;
 
       }
@@ -92,12 +91,9 @@ var sc2 = sc2 || {};
       let edge_index = 0;
       for(let i=0; i<( (edge_count*2) ); i=i+2){
 
-          // shape.edges[edge_index].node_id_st = e.arg[ i ];
-          // shape.edges[edge_index].node_id_ed = e.arg[ i + 1 ];
-          // shape.edges[edge_index] = edge_index;
           let obj = new Object();
-          obj.node_id_st = e.arg[ i+index_of_edge ];
-          obj.node_id_ed = e.arg[ i+1+index_of_edge ];
+          obj.node_id_st = int( e.arg[ i+index_of_edge ] );
+          obj.node_id_ed = int( e.arg[ i+1+index_of_edge ] );
           shape.edges[edge_index] = obj;
           edge_index+=1;
 
@@ -127,27 +123,24 @@ var sc2 = sc2 || {};
 
 
   //Event Handler for agentAdd with direct
-  _.directPosted = function (e){ //OSC EVENT
-
-    if(e.arg[1]==SYS_ID){
-      print(">>directPosted " , e.arg[0], e.arg[1]);
-      let tmp = new Agent(agents.length);
-      agmAdd(tmp);
-    }
-
-  }
-  document.addEventListener('/yaritori/post/direct', sc2.directPosted);
-
+  // _.directPosted = function (e){ //OSC EVENT
+  //
+  //   if(e.arg[1]==SYS_ID){
+  //     print(">>directPosted " , e.arg[0], e.arg[1]);
+  //     let tmp = new Agent(agents.length);
+  //     agmAdd(tmp);
+  //   }
+  //
+  // }
+  // document.addEventListener('/yaritori/post/direct', sc2.directPosted);
+  //
 
 
   //Event Handler for StateChanged for ripple trigger
   _.stateWasChanged = function (e) {
 
     let tmp = new CustomEvent('/ripples/add');
-    // let vec = new createVector();
     let vec = e.ag.position;
-    // vec.x = random();
-    // vec.y = random();
     tmp.posi = vec;
     tmp.size = e.ag.size*11.0;
     tmp.spd = 400+( 600*random() );

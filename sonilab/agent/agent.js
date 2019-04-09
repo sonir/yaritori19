@@ -83,6 +83,7 @@ class Agent {
     this.node_seeds = [AG_NODE_MAX]; //make seeds for animation
     this.edges = [];
     this.node_count = Math.round( random(AG_NODE_MIN , AG_NODE_MAX) );
+    // this.node_count = 3;
     for(let i=0; i<this.node_count; i++){
       this.nodes[i] = createVector( random(-1.0 , 1.0) , random(-1.0 , 1.0) );
       this.nodes_now[i] = this.nodes[i]; //Init the node position array for animation with same value of the origin
@@ -211,6 +212,7 @@ class Agent {
 
     } //end of for
 
+
   }
 
 
@@ -219,7 +221,6 @@ class Agent {
 
     this.edges_tmp = [];
     this.edges_tmp = eds.slice();
-    this.edges_update = true; //flg for mutex
 
   }
 

@@ -1,3 +1,4 @@
+const LINE_WIDTH = 0.5;
 const AG_ANIM_SPD = 0.032//0.064;//0.05;//0.00125;
 const AG_ANIM_RANGE = 0.0047;//0.02//0.005; //0,03;
 
@@ -40,6 +41,8 @@ var Animation = Animation || {};
 
     let ag = e.ag;
 
+    // print(ag.nodes[0].x , ag.nodes[0].y);
+
     push();
     ////////////////////////
 
@@ -57,6 +60,11 @@ var Animation = Animation || {};
 
     }
     //Draw photo nodes
+    if(ag.nodes_update==true){
+      ag.updateNodesExe();
+      ag.updateEdgesExe();
+      ag.flgShapeUpdate2False(); //release the mutex flag
+    }
     Animation.drawNodes(ag);
     Animation.drawEdges(ag);
     ////////////////////////
@@ -68,39 +76,41 @@ var Animation = Animation || {};
 
 
 
-  _.drawAgentOld = function(e){
-
-    let ag = e.ag;
-
-    push();
-    ////////////////////////
-
-    translate( cal_x(ag.position.x) , cal_y(ag.position.y) );
-
-    if(TEST_MODE){
-
-      noFill();
-      stroke(ag.color);
-      // square(cal_x(0.0)-(ag.size*0.5), cal_y(0.0)-(ag.size*0.5), ag.size);
-      circle(cal_x(0.0), cal_y(0.0), ag.size*850);
-      // //Draw View
-      circle(cal_x(0.0), cal_y(0.0), wd*ag.view*AG_VIEW_MOD);
-      text(str(ag.state), 0.0, 0.0);
-
-    }
-    //Draw photo nodes
-    Animation.drawNodes(ag);
-    Animation.drawEdges(ag);
-    ////////////////////////
-    pop();
-
-
-  }
-  document.addEventListener('/draw_agent/old' , Animation.drawAgentOld);
-
+  // _.drawAgentOld = function(e){
+  //
+  //   let ag = e.ag;
+  //
+  //   push();
+  //   ////////////////////////
+  //
+  //   translate( cal_x(ag.position.x) , cal_y(ag.position.y) );
+  //
+  //   if(TEST_MODE){
+  //
+  //     noFill();
+  //     stroke(ag.color);
+  //     // square(cal_x(0.0)-(ag.size*0.5), cal_y(0.0)-(ag.size*0.5), ag.size);
+  //     circle(cal_x(0.0), cal_y(0.0), ag.size*850);
+  //     // //Draw View
+  //     circle(cal_x(0.0), cal_y(0.0), wd*ag.view*AG_VIEW_MOD);
+  //     text(str(ag.state), 0.0, 0.0);
+  //
+  //   }
+  //   //Draw photo nodes
+  //   Animation.drawNodes(ag);
+  //   Animation.drawEdges(ag);
+  //   ////////////////////////
+  //   pop();
+  //
+  //
+  // }
+  // document.addEventListener('/draw_agent/old' , Animation.drawAgentOld);
+  //
 
 
   _.drawEdges = function(ag){
+
+    strokeWeight( LINE_WIDTH );
 
     for(let i=0; i<Object.keys(ag.edges).length;i++){
 
@@ -123,12 +133,6 @@ var Animation = Animation || {};
   _.drawNodes = function(ag){
 
     //nodesUpdate
-    if(ag.nodes_update==true){
-      ag.updateNodesExe();
-      ag.updateEdgesExe();
-      ag.flgShapeUpdate2False(); //release the mutex flag
-    }
-
     Animation.updateNodePosition(ag);
 
     //draw Nodes
@@ -140,7 +144,6 @@ var Animation = Animation || {};
       p1x_scaled = p1x*ag.size*0.5;
       p1y_scaled = p1y*ag.size*0.5;
 
-
       noStroke();
       //COLOR TEST
       fill(ag.color);
@@ -151,12 +154,10 @@ var Animation = Animation || {};
 
         p2x_scaled = ag.nodes_now[(i-1)].x*ag.size*0.5;
         p2y_scaled = ag.nodes_now[(i-1)].y*ag.size*0.5;
-        // line( cal_x(p1x_scaled), cal_y(p1y_scaled), cal_x(p2x_scaled), cal_y(p2y_scaled) );
 
       }
 
     } //End of for
-
 
 
   } //end of drawNodes
@@ -178,6 +179,7 @@ var Animation = Animation || {};
     } //end of for
 
   }
+
 
 
 })(Animation);

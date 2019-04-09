@@ -23,6 +23,7 @@ function agmUpdate(){
     if(deadCheck(agents[i]))continue;
     agmCycle(agents[i]);
     ev_draw.ag = agents[i];
+    // print(agents[i].nodes[1].x, agents[i].nodes[1].y);
     document.dispatchEvent(ev_draw);
     // drawAgent(agents[i].position.x, agents[i].position.y, agents[i].size, agents[i]);
   }
@@ -37,6 +38,8 @@ function agmUpdate(){
 
 
 function agmCycle(ag){
+
+  // if(ag.uid==0)print('%%' , ag.nodes[1].x , ag.nodes[1].y);
 
   ag.nearest_id = AgTools.seekNearest(ag, agents);
 

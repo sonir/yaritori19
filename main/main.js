@@ -48,8 +48,6 @@ function draw() {
   //Update Scenes
   Scene.update();
   Scene.draw();
-  // AG_MOV_CTRL = 1.0;
-  // print(AG_MOV_CTRL);
 
 
 }
@@ -79,48 +77,6 @@ function deviceTurned(){
 }
 
 
-
-//
-// function calVel(vel){
-//
-//    vel.add( createVector( (random(-1,1)*SPD_MOD) , (random(-1,1)*SPD_MOD) ) );
-//
-//    //SPD Limitter
-//    if(vel.x>SPD_MAX){
-//
-//      vel.x = SPD_MAX;
-//      // print('LIM_A : ' + vel.x);
-//
-//    }else if(vel.x <= (SPD_MAX*-1) ){
-//
-//      vel.x = (SPD_MAX*-1);
-//      // print('LIM_B : ' + vel.x);
-//
-//    }else{
-//
-//      // print('LIM_ZERO1 : ' + vel.x);
-//
-//    }
-//
-//    if(vel.y>SPD_MAX){
-//
-//      vel.y = SPD_MAX;
-//      // print('LIM_C : ' + vel.y);
-//
-//    }else if(vel.y <= (SPD_MAX*-1) ){
-//
-//      vel.y = (SPD_MAX*-1);
-//      // print('LIM_D : ' + vel.y);
-//
-//    }else{
-//
-//      // print('LIM_ZERO2 : ' + vel.y);
-//
-//    }
-//
-//    return vel;
-//
-// }
 
 
 //////////////////////////////////////

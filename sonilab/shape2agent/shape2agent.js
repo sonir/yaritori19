@@ -1,6 +1,6 @@
 //SYSTEM DEFINES
 const V_FIX = 0.02;//ORG 0.005; //Basic param for View
-const S_FIX = 0.00075;//ORG 0.0055; //0.00017 //Basic param for Size
+const S_FIX = 0.0008;//0.00075;//ORG 0.0055; //0.00017 //Basic param for Size
 const M_FIX = 0.025;//ORG 0.035; //0.0005 //Basic param for move
 const NODE_AVG = 20;
 const AG_SIZE_MIN = 0.0003;//ORG 0.05;
@@ -35,6 +35,8 @@ var Shape2Agent = Shape2Agent || {};
     print('view: ' , ag.view);
     print('size: ' , ag.size);
     print('mov: ' , ag.mov);
+    print('node_count: ' , ag.nodes.length);
+    print('edge_count: ' , Object.keys(ag.edges).length);
 
     //Bang event to add new agent to the model
     let tmp = new CustomEvent('/agent/converted');
@@ -86,9 +88,13 @@ var Shape2Agent = Shape2Agent || {};
     //Ignore it in p5 version
 
     //ag.nodes = shape.nodes;
-    ag.updateNodes(shape.nodes);
+    // ag.updateNodes(shape.nodes);
     //ag.nodes_now = ag.nodes;
-    ag.updateEdges(shape.edges);
+    // ag.updateEdges(shape.edges);
+    ag.updateShape(shape.nodes,shape.edges);
+    ag.updateNodesExe();
+    ag.updateEdgesExe();
+    ag.flgShapeUpdate2False(); //release the mutex flag
 
 
 
