@@ -114,7 +114,7 @@ var Snd = Snd || {};
     glitch.playWithRandom();
 
     let tmp = new CustomEvent('/send');
-    tmp.data = '/sound/trg ' + SYS_ID;
+    tmp.data = '/sound/trg ' + SYS_ID + ' ' + (agm_density*agm_density);
     document.dispatchEvent(tmp);
 
   }

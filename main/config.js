@@ -25,4 +25,4 @@ const KEY_VAL_FOR_FEED = 21.0;//12.0;//pre vol 6 apply to 1.95  //7.8;//1.95;//7
 const AG_MOV_CTRL_MAX = 100.0;
 var AG_MOV_CTRL = 1.0;
 const AG_MAX = 100;
-const AGM_INIT_NUM = 3;
+const AGM_INIT_NUM = 15;
