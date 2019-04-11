@@ -77,12 +77,12 @@ function deviceTurned(){
 
   // print("turned!!");
   setTimeout(scSetupAuto, 500);
-  // scSetupAuto();
+  scSetupAuto();
   cl = color(random(0,255) , random(0,255) , random(0,255));
   // color = 255;
 
   print('turned !!');
-  BG_COLOR = 100;
+  //BG_COLOR = 100;
 
 }
 
