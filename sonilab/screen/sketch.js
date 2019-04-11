@@ -55,8 +55,8 @@ function setup() {
 
   cl = color(255 , 255, 255);
 
-//     scSetupAuto ();
-    scSetupSemiAuto(SC_SIZE.IPHONE_X);
+    scSetupAuto ();
+    // scSetupSemiAuto(SC_SIZE.IPHONE_X);
   test();
 
 }

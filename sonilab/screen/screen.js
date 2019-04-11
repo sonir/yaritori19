@@ -10,7 +10,8 @@ var SC_SIZE = {
     IPHONE_X : 1,
     IPHONE_X_W : 2,
     IPAD_PRO12 : 3,
-    IPAD_PRO12_W : 4
+    IPAD_PRO12_W : 4,
+    AUTO : 5
 };
 
 
@@ -43,21 +44,25 @@ function scSetupSemiAuto(sc){
   switch(sc){
 
     case SC_SIZE.IPHONE_X:
-      // x = 1125*0.5;
-      // y = 2436*0.5;
-      x = 374;
-      y = 767;
+      x = 375;
+      y = 812;
+      //x = 374;
+      //y = 767;
       break;
 
     case SC_SIZE.IPHONE_X_W:
-    x = 767;
-    y = 374;
+      x = 812;
+      y = 375;
       break;
 
     case SC_SIZE.IPAD_PRO12:
+      x = 1024;
+      y = 1366;
       break;
 
     case SC_SIZE.IPAD_PRO12_W:
+      x = 1366;
+      y = 1024;
       break;
 
     default:

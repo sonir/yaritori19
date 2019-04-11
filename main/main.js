@@ -22,8 +22,14 @@ function preload() { //SOUND Loading
 
 function setup() {
 
-  //scSetupAuto ();
-  scSetupSemiAuto(SC_SIZE.IPHONE_X);
+  scSetupAuto ();
+  if ( TERMINAL_TYPE == SC_SIZE.IPHONE_X_W ) scSetupSemiAuto(SC_SIZE.IPHONE_X_W);
+  else if ( TERMINAL_TYPE == SC_SIZE.IPAD_PRO12_W ) scSetupSemiAuto(SC_SIZE.IPAD_PRO12_W);
+  else scSetupAuto;
+
+  // scSetupAuto ();
+  // scSetupSemiAuto(TERMINAL_TYPE);
+
   checkScreen(SC_DEBUG_FLG);
 
   //Pramset of sounds
@@ -43,7 +49,7 @@ function setup() {
 
 function draw() {
 
-  background(20);
+  background(BG_COLOR);
 
   //Update Scenes
   Scene.update();
@@ -51,6 +57,7 @@ function draw() {
 
 
 }
+
 
 
 function touchEnded() {
@@ -69,10 +76,13 @@ function touchEnded() {
 function deviceTurned(){
 
   // print("turned!!");
-  setTimeout(scSetupAuto, 3000);
+  setTimeout(scSetupAuto, 500);
   // scSetupAuto();
   cl = color(random(0,255) , random(0,255) , random(0,255));
   // color = 255;
+
+  print('turned !!');
+  BG_COLOR = 100;
 
 }
 

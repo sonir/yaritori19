@@ -1,11 +1,18 @@
 //config file for Yaritori2019
 
+//TERMINAL_TYPE
+// const TERMINAL_TYPE = SC_SIZE.IPHONE_X_W;
+// const TERMINAL_TYPE = SC_SIZE.IPAD_PRO12_W;
+// const TERMINAL_TYPE = SC_SIZE.AUTO;
+
+
 //MODE
-var PERFORMANCE_MODE = true;
+var PERFORMANCE_MODE = false;
 var TEST_MODE = false;
 
 //SCREEN SETUPS
 var SC_DEBUG_FLG = false;
+let BG_COLOR = 20;
 
 
 //SCENE CONTROL
@@ -25,4 +32,4 @@ const KEY_VAL_FOR_FEED = 21.0;//12.0;//pre vol 6 apply to 1.95  //7.8;//1.95;//7
 const AG_MOV_CTRL_MAX = 100.0;
 var AG_MOV_CTRL = 1.0;
 const AG_MAX = 100;
-const AGM_INIT_NUM = 15;
+const AGM_INIT_NUM = 75;
