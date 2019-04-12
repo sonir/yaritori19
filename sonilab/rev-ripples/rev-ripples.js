@@ -1,22 +1,23 @@
-const FINISHED_NOTHING = -1;
-const RIPPLE_MAX_NUM = 128;
-var RIPPLE_COLOR = 'white';
+const REV_FINISHED_NOTHING = -1;
+const REV_RIPPLE_MAX_NUM = 128;
+var REV_RIPPLE_COLOR = 'white';
 
 
-var Ripples = Ripples || {};
+var RevRipples = RevRipples || {};
 
 (function(_){
 
   let uid = 0;
   let buf = [];
   let del_count = 0;
+  let fill_flg = true;
 
   _.setup = function(e){
 
-    // print('setup:Ripples')
+    // print('setup:RevRipples')
 
   }
-  document.addEventListener('/setup', Ripples.setup);
+  document.addEventListener('/setup', RevRipples.setup);
 
 
 
@@ -42,21 +43,25 @@ var Ripples = Ripples || {};
 
 
   }
-  document.addEventListener('/update', Ripples.update);
+  document.addEventListener('/update', RevRipples.update);
 
 
 
   _.draw = function(e){
 
-    noFill();
+    if(fill_flg) fill(255);
+    else noFill();
+
     for(let i=0; i<buf.length;i++){
 
-      Ripples.drawOne(buf[i]);
+      RevRipples.drawOne(buf[i]);
 
     }
+    noFill();
+
 
   }
-  document.addEventListener('/draw', Ripples.draw);
+  document.addEventListener('/draw', RevRipples.draw);
 
 
 
@@ -65,9 +70,9 @@ var Ripples = Ripples || {};
     //Init Basic
     strokeWeight(1.5);
     // stroke( color(255, 255, 255, 255*(1-rp.now()) ) );
-    stroke( color(255, 255, 255, 255*( 1-rp.nowRaw()) ) );
+    stroke( color(255, 255, 255, 255*( rp.nowRaw()) ) );
 
-    let size = rp.size*rp.now();
+    let size = rp.size* ( rp.now()*rp.now() ) ;
     circle(cal_x(rp.position.x), cal_y(rp.position.y), cal_x( rp.size*rp.now() ) );
 
   }
@@ -76,36 +81,36 @@ var Ripples = Ripples || {};
 
   _.add = function(e){
 
-    if(!Ripples.sizeCheck()){
+    if(!RevRipples.sizeCheck()){
 
       del_count++;
 
     }
 
-    let tmp = new Ripple(e.posi , e.size, e.spd);
+    let tmp = new RevRipple(e.posi , e.size, e.spd);
     buf.push(tmp);
 
   }
-  document.addEventListener('/ripples/add', Ripples.add);
+  document.addEventListener('/rev-ripples/add', RevRipples.add);
 
 
 
   _.sizeCheck = function(){
 
-    if(buf.length>=RIPPLE_MAX_NUM) return false;
+    if(buf.length>=REV_RIPPLE_MAX_NUM) return false;
     else return true;
 
   }
 
 
 
-})(Ripples);
+})(RevRipples);
 
 
 
 
 
-class Ripple {
+class RevRipple {
 
   constructor(position, size, spd){
 
@@ -119,7 +124,7 @@ class Ripple {
 
   now(){
 
-    return (this.mt.update() * this.size);
+    return (this.mt.updateInvert() * this.size);
 
   }
 
@@ -127,7 +132,7 @@ class Ripple {
 
   nowRaw(){
 
-    return this.mt.update();
+    return this.mt.updateInvert();
 
   }
 

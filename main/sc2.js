@@ -156,6 +156,13 @@ var sc2 = sc2 || {};
 
     agmAdd(e.ag);
 
+    let tmp = new CustomEvent('/rev-ripples/add');
+    let vec = e.ag.position;
+    tmp.posi = vec;
+    tmp.size = 1.0;//e.ag.size*11.0;
+    tmp.spd = 180;//400+( 600*random() );
+    document.dispatchEvent(tmp);
+
   }
   document.addEventListener('/agent/converted' , sc2.addConvertedAgent);
 

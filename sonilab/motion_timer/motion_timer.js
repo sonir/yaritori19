@@ -34,7 +34,7 @@ class MotionTimer {
 
   updateInvert(){
 
-    return 1 - update();
+    return 1 - this.update();
 
   }
 
