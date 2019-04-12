@@ -1,6 +1,6 @@
 const INDEX_OF_NODE_COUNT = 3;
 const INDEX_OF_NODE = INDEX_OF_NODE_COUNT+1;
-
+const BRIGHT_FIX = 0.75
 
 var sc2 = sc2 || {};
 
@@ -64,7 +64,8 @@ var sc2 = sc2 || {};
       let index_of_edge_count = (node_count*2)+4;
       let index_of_edge = index_of_edge_count+1;
       let edge_count = int( e.arg[index_of_edge_count] );
-      let index_of_hsv = int( e.arg[index_of_edge_count*2+7] );
+      // let index_of_hsv = int( e.arg[ (edge_count*2)+index_of_edge] );
+      let index_of_hsv = (edge_count*2)+index_of_edge;
 
       if(TEST_MODE==true){
         print('arg0 (adr) : ' + e.arg[0]);
@@ -76,7 +77,16 @@ var sc2 = sc2 || {};
         print('arg6: (edge_count)' + e.arg[index_of_edge_count]);
         print('arg7a: (edge0 st)' + e.arg[index_of_edge]);
         print('arg7b: (edge0 ed)' + e.arg[index_of_edge+1]);
-        print('arg8: (h)' + index_of_hsv);
+        print('arg8: (h.)' + e.arg[index_of_hsv]);
+        print('arg9: (s.)' + e.arg[index_of_hsv+1]);
+        print('arg10: (v.)' + e.arg[index_of_hsv+2]);
+        print('index of edge count: ' , index_of_edge_count);
+        print('edge count: ' , edge_count);
+        print('index of edge: ' , index_of_edge);
+        print('hsv(v):(edge_count*2)+index_of_edge' , (edge_count*2)+index_of_edge );
+        print('arg[hsv(v)]: ' , e.arg[ (edge_count*2)+index_of_edge ] )
+
+
       }
 
 
@@ -99,6 +109,21 @@ var sc2 = sc2 || {};
 
       }
 
+      colorMode(HSB , 1);
+      //Store the color with HSV from 0-1
+      // NOSTEP >>>  shape.color = color(float(e.arg[index_of_hsv]) , float(e.arg[index_of_hsv+1]) , float(e.arg[index_of_hsv+2]));
+
+      //Step version
+      let s , v;
+      if( float(e.arg[index_of_hsv+1]) > 0.5 ) s = 1.0;
+      else s = 0.75;
+      if( float(e.arg[index_of_hsv+2]) > 0.5 ) v = 1.0;
+      else v = 0.75;
+
+
+      shape.color = color(float(e.arg[index_of_hsv]) , s , v); //Bright is fixed
+      //Use the value with converted RGB
+      colorMode(RGB,255);
 
       if(TEST_MODE==true){
         print('--STORED SHAPE--')
@@ -108,7 +133,11 @@ var sc2 = sc2 || {};
         print('arg6: (edge_count)' + Object.keys(shape.edges).length);
         print('arg7a: (edge0 st)' + shape.edges[0].node_id_st);
         print('arg7b: (edge0 ed)' + shape.edges[0].node_id_ed);
-        print('arg8: (h)' + index_of_hsv);
+        // print('arg8: (h)' + index_of_hsv);
+        print('arg8: (h)' + shape.color);
+        // print('arg9: (s)' + shape.color.s);
+        // print('arg10: (v)' + shape.color.v);
+
       }
 
       //Bang event to converted shape to agent

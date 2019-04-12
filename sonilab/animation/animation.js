@@ -76,38 +76,6 @@ var Animation = Animation || {};
 
 
 
-  // _.drawAgentOld = function(e){
-  //
-  //   let ag = e.ag;
-  //
-  //   push();
-  //   ////////////////////////
-  //
-  //   translate( cal_x(ag.position.x) , cal_y(ag.position.y) );
-  //
-  //   if(TEST_MODE){
-  //
-  //     noFill();
-  //     stroke(ag.color);
-  //     // square(cal_x(0.0)-(ag.size*0.5), cal_y(0.0)-(ag.size*0.5), ag.size);
-  //     circle(cal_x(0.0), cal_y(0.0), ag.size*850);
-  //     // //Draw View
-  //     circle(cal_x(0.0), cal_y(0.0), wd*ag.view*AG_VIEW_MOD);
-  //     text(str(ag.state), 0.0, 0.0);
-  //
-  //   }
-  //   //Draw photo nodes
-  //   Animation.drawNodes(ag);
-  //   Animation.drawEdges(ag);
-  //   ////////////////////////
-  //   pop();
-  //
-  //
-  // }
-  // document.addEventListener('/draw_agent/old' , Animation.drawAgentOld);
-  //
-
-
   _.drawEdges = function(ag){
 
     strokeWeight( LINE_WIDTH );

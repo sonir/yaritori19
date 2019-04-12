@@ -220,7 +220,7 @@ class Agent {
   updateEdges(eds){
 
     this.edges_tmp = [];
-    this.edges_tmp = eds.slice();
+    this.edges_tmp = eds.slice(); // copy an array
 
   }
 
@@ -229,7 +229,7 @@ class Agent {
   updateEdgesExe(){ //actual reflect the received param
 
     this.edges = [];
-    this.edges = this.edges_tmp.slice();
+    this.edges = this.edges_tmp.slice(); //copy an array
 
   }
 

@@ -50,55 +50,55 @@ var Shape2Agent = Shape2Agent || {};
 
   _.process = function(shape){
 
-    ag = new Agent(agents.length);
+      ag = new Agent(agents.length);
 
-    ag.view = Object.keys(shape.edges).length * V_FIX;
+      ag.view = Object.keys(shape.edges).length * V_FIX;
 
-    ag.size = shape.nodes.length * S_FIX;
+      ag.size = shape.nodes.length * S_FIX;
 
-    // size minimum limit
-    if(ag.size < AG_SIZE_MIN){
+      // size minimum limit
+      if(ag.size < AG_SIZE_MIN){
 
-      ag.size = AG_SIZE_MIN;
+        ag.size = AG_SIZE_MIN;
 
-    }
-
-
-    //Calc MOV
-    if(shape.nodes.length != 0){
-
-      ag.mov = ( NODE_AVG / shape.nodes.length ) * M_FIX;
-
-    } else {
-
-      ag.mov = (NODE_AVG*2) * M_FIX;
-
-    }
+      }
 
 
-    if(ag.mov < MOV_MINIMUM){
+      //Calc MOV
+      if(shape.nodes.length != 0){
 
-      ag.mov = MOV_MINIMUM;
+        ag.mov = ( NODE_AVG / shape.nodes.length ) * M_FIX;
 
-    }
+      } else {
 
-    // //OverWrite the agent position with cetering with 3sceen
-    // ag.posi = makePositionToAdd();
+        ag.mov = (NODE_AVG*2) * M_FIX;
 
-    //Ignore it in p5 version
-
-    //ag.nodes = shape.nodes;
-    // ag.updateNodes(shape.nodes);
-    //ag.nodes_now = ag.nodes;
-    // ag.updateEdges(shape.edges);
-    ag.updateShape(shape.nodes,shape.edges);
-    ag.updateNodesExe();
-    ag.updateEdgesExe();
-    ag.flgShapeUpdate2False(); //release the mutex flag
+      }
 
 
+      if(ag.mov < MOV_MINIMUM){
 
-    return ag;
+        ag.mov = MOV_MINIMUM;
+
+      }
+
+      // //OverWrite the agent position with cetering with 3sceen
+      // ag.posi = makePositionToAdd();
+
+      //Ignore it in p5 version
+
+      //ag.nodes = shape.nodes;
+      // ag.updateNodes(shape.nodes);
+      //ag.nodes_now = ag.nodes;
+      // ag.updateEdges(shape.edges);
+      ag.updateShape(shape.nodes,shape.edges);
+      ag.updateNodesExe();
+      ag.updateEdgesExe();
+      ag.flgShapeUpdate2False(); //release the mutex flag
+
+      ag.color = shape.color;
+
+      return ag;
 
 
   }
