@@ -1,6 +1,6 @@
 const LINE_WIDTH = 0.5;
-const AG_ANIM_SPD = 0.032//0.064;//0.05;//0.00125;
-const AG_ANIM_RANGE = 0.0047;//0.02//0.005; //0,03;
+const AG_ANIM_SPD = 0.0045;//0.032//0.064;//0.05;//0.00125;
+const AG_ANIM_RANGE = 0.45;//0.0047;//0.02//0.005; //0,03;
 
 let p1x = null;
 let p1y = null;
@@ -141,10 +141,13 @@ var Animation = Animation || {};
       ag.nodes_now[i].x = ag.nodes[i].x + ( AgTools.scale2amp( noise( ag.node_seeds[i].x ) ) * AG_ANIM_RANGE );
       ag.nodes_now[i].y = ag.nodes[i].y + ( AgTools.scale2amp( noise( ag.node_seeds[i].y) ) * AG_ANIM_RANGE );
 
+      //Step the seed
       ag.node_seeds[i].x += random( AG_ANIM_SPD*0.5 , AG_ANIM_SPD*2.0 );
       ag.node_seeds[i].y += random( AG_ANIM_SPD*0.5 , AG_ANIM_SPD*2.0 );;
 
     } //end of for
+    ag.nodes_now = Animation.centering(ag.nodes_now);
+
 
   }
 
