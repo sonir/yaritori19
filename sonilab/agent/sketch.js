@@ -89,6 +89,26 @@ function test(){
     troubled = true;
   }
 
+  //Test ActiveCount
+  try{
+
+    tmp_ags = [];
+    tmp_ags[0] = new Agent(0);
+    tmp_ags[0].active = false;
+    tmp_ags[1] = new Agent(1);
+    tmp_ags[2] = new Agent(2);
+    if( AgTools.countActive(tmp_ags) != 2 ){
+
+      throw new Error('ERR :: AgTools.countActive');
+
+    }
+
+  }catch(e){
+
+    console.log(e.message);
+    troubled = true;
+
+  }
 
   //Test position
   print("WD:"  , wd);

@@ -10,6 +10,11 @@
 var PERFORMANCE_MODE = true;
 var TEST_MODE = false;
 
+//for Drone
+const DENSITY_WITH_ACTIVE_ONLY = true;
+//if false, the density is not decrease if some agents dead.
+
+
 //SCREEN SETUPS
 var SC_DEBUG_FLG = false;
 let BG_COLOR = 20;

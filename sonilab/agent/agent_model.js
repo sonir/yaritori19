@@ -51,7 +51,14 @@ function agmUpdate(){
     // drawAgent(agents[i].position.x, agents[i].position.y, agents[i].size, agents[i]);
   }
 
-  ev_report.density = agents.length/AG_MAX;
+
+  //ev_report.density = agents.length/AG_MAX;
+  if(DENSITY_WITH_ACTIVE_ONLY){
+    ev_report.density = AgTools.countActive(agents)/AG_MAX;
+  } else {
+    ev_report.density = agents.length/AG_MAX;
+  }
+
   agm_density = ev_report.density;
   document.dispatchEvent(ev_report);
   // print(report_interval+=REPORT_INC);

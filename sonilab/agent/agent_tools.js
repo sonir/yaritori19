@@ -101,4 +101,21 @@ var AgTools = AgTools || {};
 
 
 
+  //Count active agent
+  _.countActive = function(agents){
+
+    let count = 0;
+
+    for(let i=0; i<agents.length;i++){
+
+      if(agents[i].active) count++;
+
+    }
+
+    return count;
+
+  }
+
+
+
 })(AgTools);
