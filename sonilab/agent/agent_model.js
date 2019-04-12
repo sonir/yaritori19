@@ -20,7 +20,30 @@ function agmUpdate(){
   }
 
   for(let i = 0; i<agents.length; i++){
-    if(deadCheck(agents[i]))continue;
+    if(deadCheck(agents[i])){
+
+      //Make slow ripple when agent dead at once only.
+      if(!agents[i].dead_rippled){
+
+        let tmp = new CustomEvent('/ripples/add');
+        tmp.posi = agents[i].position;
+        tmp.size = 1.5;
+        tmp.spd = 12000;
+        document.dispatchEvent(tmp);
+
+        let tmp2 = new CustomEvent('/ripples/add');
+        tmp2.posi = agents[i].position;
+        tmp2.size = 1.5;
+        tmp2.spd = 16000;
+        document.dispatchEvent(tmp2);
+
+
+        agents[i].dead_rippled = true;
+      }
+
+      //Ignore dead agent
+      continue;
+    }
     agmCycle(agents[i]);
     ev_draw.ag = agents[i];
     // print(agents[i].nodes[1].x, agents[i].nodes[1].y);

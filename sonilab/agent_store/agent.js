@@ -32,7 +32,7 @@ const AG_DISTANT_WITH_NEAREST_DEF = 0.0;
 const AG_DISTANCE_FOR_DMG = AG_VIEW_DEF*0.3;
 
 
-const AG_DEATH_THREATH =0.00005; //0.0001
+const AG_DEATH_THREATH = 0.00005;//1.0;//0.00005; //0.0001
 
 //Fix or MOD for Interactions
 const SIZE_MOD = 0.03;

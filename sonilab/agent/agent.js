@@ -61,6 +61,7 @@ class Agent {
     this.state = AG_STSTE_DEF;
     this.prestate = AG_STSTE_DEF;
     this.nodes_update = false; //mutex flag for nodesUpdate
+    this.dead_rippled = false;
     // this.edges_update = false; //mutex flag for edgesUpdate
 
     //Basic Params
