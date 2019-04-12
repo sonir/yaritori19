@@ -86,9 +86,11 @@ class Agent {
     // this.node_count = 3;
     for(let i=0; i<this.node_count; i++){
       this.nodes[i] = createVector( random(-1.0 , 1.0) , random(-1.0 , 1.0) );
-      this.nodes_now[i] = this.nodes[i]; //Init the node position array for animation with same value of the origin
+      // this.nodes_now[i] = this.nodes[i]; //Init the node position array for animation with same value of the origin
       this.node_seeds[i] = createVector( random(0.0 , 1.0) , random(0.0 , 1.0) );
     }
+    this.nodes = Animation.centering(this.nodes);
+    this.nodes_now = this.nodes.slice();
     //Make Edges
     for(let i=0; i<this.nodes.length; i++){
 

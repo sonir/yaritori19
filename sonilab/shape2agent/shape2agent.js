@@ -91,6 +91,8 @@ var Shape2Agent = Shape2Agent || {};
       // ag.updateNodes(shape.nodes);
       //ag.nodes_now = ag.nodes;
       // ag.updateEdges(shape.edges);
+
+      shape.nodes = Animation.centering(shape.nodes);
       ag.updateShape(shape.nodes,shape.edges);
       ag.updateNodesExe();
       ag.updateEdgesExe();

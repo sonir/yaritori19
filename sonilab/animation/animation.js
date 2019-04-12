@@ -52,11 +52,11 @@ var Animation = Animation || {};
 
       noFill();
       stroke(ag.color);
-      // square(cal_x(0.0)-(ag.size*0.5), cal_y(0.0)-(ag.size*0.5), ag.size);
-      circle(cal_x(0.0), cal_y(0.0), ag.size*850);
-      // //Draw View
-      circle(cal_x(0.0), cal_y(0.0), wd*ag.view*AG_VIEW_MOD);
-      text(str(ag.state), 0.0, 0.0);
+      circle( cal_x(0.0), cal_y(0.0), ag.size*850 );
+      //Draw View
+      circle( cal_x(0.0), cal_y(0.0), wd*ag.view*AG_VIEW_MOD );
+      //Indicate State
+      text( str(ag.state), 0.0, 0.0 );
 
     }
     //Draw photo nodes
@@ -147,6 +147,45 @@ var Animation = Animation || {};
     } //end of for
 
   }
+
+
+
+  _.centering = function (node){
+
+    let center = Animation.calcCenter(node);
+
+    //CalcCenter
+
+    for(let i=0; i<node.length; i++){
+
+      node[i] = p5.Vector.sub(node[i] , center);
+
+    }
+
+    return node;
+
+
+  }
+
+
+
+  _.calcCenter = function (node) {
+
+    let center = createVector(0.0 , 0.0);
+
+    for(let i=0; i<node.length; i++){
+      center.x += node[i].x;
+      center.y += node[i].y;
+    }
+
+    center = p5.Vector.div(center , node.length);
+    return center;
+
+  }
+
+
+
+
 
 
 
