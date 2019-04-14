@@ -16,6 +16,13 @@ function preload() { //SOUND Loading
   Snd.preload();
 
 
+  if(INIT_AGENTS==false && INIT_AGENTS_CONFIRMATION==false){
+    //
+    store.loadAgents();
+
+  } //If when init, don't read
+
+
 }
 
 
@@ -68,6 +75,7 @@ function touchEnded() {
   let tmp = new CustomEvent('/init_play');
   document.dispatchEvent(tmp);
 
+  store.saveAgents();
 
 }
 

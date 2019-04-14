@@ -4,4 +4,4 @@ const AG_MOV_CTRL = 1.0;
 var PERFORMANCE_MODE = false;
 
 const TEST_MODE = false;
-const DENSITY_WITH_ACTIVE_ONLY = truel
+const DENSITY_WITH_ACTIVE_ONLY = true

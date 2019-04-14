@@ -79,9 +79,12 @@ class Agent {
 
 
     //Draw
-    this.nodes = [AG_NODE_MAX];
-    this.nodes_now = [AG_NODE_MAX];
-    this.node_seeds = [AG_NODE_MAX]; //make seeds for animation
+    // this.nodes = [AG_NODE_MAX];
+    // this.nodes_now = [AG_NODE_MAX];
+    // this.node_seeds = [AG_NODE_MAX]; //make seeds for animation
+    this.nodes = [];
+    this.nodes_now = [];
+    this.node_seeds = []; //make seeds for animation
     this.edges = [];
     this.node_count = Math.round( random(AG_NODE_MIN , AG_NODE_MAX) );
     // this.node_count = 3;
@@ -90,25 +93,10 @@ class Agent {
       // this.nodes_now[i] = this.nodes[i]; //Init the node position array for animation with same value of the origin
       this.node_seeds[i] = createVector( random(0.0 , 1.0) , random(0.0 , 1.0) );
     }
-    this.nodes = Animation.centering(this.nodes);
-    this.nodes_now = this.nodes.slice();
-    //Make Edges
-    for(let i=0; i<this.nodes.length; i++){
+    // this.nodes = Animation.centering(this.nodes);
+    // this.nodes_now = this.nodes.slice();
 
-      let obj = new Object();
-      obj.node_id_st = i;
-      obj.node_id_ed = i+1;
-
-      //Make loop
-      if(i == (this.nodes.length-1)){
-
-        obj.node_id_ed = 0;
-
-      }
-
-      this.edges[i]=obj;
-
-    }
+    this.initNodes();
 
 
   }
@@ -191,10 +179,86 @@ class Agent {
   }
 
 
+
+  resetNodes(){ //invoke this method before change shape
+
+    this.nodes = [];
+    this.nodes_now = [];
+    this.node_seeds = [];
+    this.edges = [];
+
+  }
+
+
+
+  initNodes(){ //Invoke this method after set shape
+
+    //Clear node related arrays
+    this.node_seeds = [];
+    this.nodes_now = [];
+    //Make edges
+
+    //Make Seed
+    for(let i=0; i<this.nodes.length;i++){
+
+      let tmp = createVector( random(0.0 , 1.0) , random(0.0 , 1.0) );
+      this.node_seeds.push(tmp);
+
+    } //end of for
+    this.nodes = Animation.centering(this.nodes);
+    this.nodes_now = this.nodes.slice();
+
+  }
+
+
+
+  createEdge(){ //When you want to Make edge by the system
+
+    //Make Edges
+    for(let i=0; i<this.nodes.length; i++){
+
+      let obj = new Object();
+      obj.node_id_st = i;
+      obj.node_id_ed = i+1;
+
+      //Make loop
+      if(i == (this.nodes.length-1)){
+
+        obj.node_id_ed = 0;
+
+      }
+
+      this.edges[i]=obj;
+
+    }
+
+
+  }
+
+
   updateNodes(nds){
 
     this.nodes_tmp = [];
     this.nodes_tmp = nds.slice(); //Copy the array
+    this.edges = [];
+    //Make Edges
+    for(let i=0; i<this.nodes.length; i++){
+
+      let obj = new Object();
+      obj.node_id_st = i;
+      obj.node_id_ed = i+1;
+
+      //Make loop
+      if(i == (this.nodes.length-1)){
+
+        obj.node_id_ed = 0;
+
+      }
+
+      this.edges[i]=obj;
+
+    }
+
 
   }
 
@@ -220,6 +284,7 @@ class Agent {
 
 
 
+
   updateEdges(eds){
 
     this.edges_tmp = [];
@@ -235,6 +300,7 @@ class Agent {
     this.edges = this.edges_tmp.slice(); //copy an array
 
   }
+
 
 
   updateShape(nds,eds){

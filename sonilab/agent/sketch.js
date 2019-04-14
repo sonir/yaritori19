@@ -129,8 +129,8 @@ function setup() {
     // scSetupAuto ();
     scSetupSemiAuto(SC_SIZE.IPHONE_X);
 
-  agmInit();
-  test();
+    agmInit();
+    test();
 
 }
 
@@ -164,6 +164,7 @@ function draw() {
 }
 
 
+
 function touchEnded() {
 
   print('touch');
@@ -179,9 +180,6 @@ function touchEnded() {
     sample.stop();
 
   }
-
-
-
 }
 
 
