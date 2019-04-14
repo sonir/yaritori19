@@ -114,6 +114,14 @@ function agmInit(){
     agmAdd( (new Agent(i)) ) ;
   }
 
+  // for(let i = 0; i<AGM_INIT_NUM; i++){
+  //   let ag;
+  //   ag.initNodes();
+  //   ag.createEdge();
+  //   agmAdd( (new Agent(i)) ) ;
+  // }
+
+
 }
 
 
