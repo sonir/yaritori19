@@ -7,7 +7,7 @@
 
 
 //MODE
-var PERFORMANCE_MODE = true;
+var PERFORMANCE_MODE = false;
 var TEST_MODE = false;
 
 //for Drone
@@ -17,7 +17,7 @@ const DENSITY_WITH_ACTIVE_ONLY = true;
 
 //SCREEN SETUPS
 var SC_DEBUG_FLG = false;
-let BG_COLOR = 20;
+let BG_COLOR = 0;
 
 
 //SCENE CONTROL
